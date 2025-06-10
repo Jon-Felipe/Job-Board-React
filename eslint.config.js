@@ -19,6 +19,11 @@ export default tseslint.config(
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
     rules: {
       ...react.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
@@ -26,8 +31,16 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' },
+      ],
+      '@typescript-eslint/consistent-type-imports': 'error',
+
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
+      'react/no-array-index-key': 'error',
     },
   }
 );
