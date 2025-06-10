@@ -10,13 +10,13 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   background-color: #f9f9f9;
-  color: #333;
+  color: #1d2445;
   font-size: 16px;
 }
 
 a {
-  color: #007bff;
   text-decoration: none;
+  color: #1d2445;
 }
 
 h1,
