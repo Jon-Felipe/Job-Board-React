@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './Search.module.css';
 import { FaSearch } from 'react-icons/fa';
 
-type SearchProp = {
+export type SearchProp = {
   name: string;
-  placeholder: string;
   value: string;
+  placeholder: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
 };
@@ -23,9 +23,10 @@ function Search({
       <input
         type='search'
         id={name}
+        data-testid='search-input'
         name={name}
-        placeholder={placeholder}
         value={value}
+        placeholder={placeholder}
         onChange={onChange}
         required={required}
         className={styles.search}
