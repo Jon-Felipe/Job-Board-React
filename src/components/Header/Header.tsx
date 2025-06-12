@@ -1,7 +1,7 @@
 import { FaBars } from 'react-icons/fa';
 
 // components
-import Button from '../ui/Button';
+import Button from '../ui/Button/Button';
 
 // extras
 import styles from './Header.module.css';
@@ -30,7 +30,7 @@ function Header({ title }: HeaderProps) {
             Location
           </a>
         </nav>
-        <Button>Login / Sign Up</Button>
+        <Button variant='primary'>Login / Sign Up</Button>
         <FaBars className={styles.menuIcon} />
       </div>
     </header>
