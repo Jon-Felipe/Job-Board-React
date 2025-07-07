@@ -33,6 +33,27 @@
   row-gap: 20px;
 }
 
+.categories {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  margin-top: 10px;
+}
+
+.categoryTitle {
+  margin-bottom: 0;
+}
+
+.categoryList {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  li {
+    text-decoration: none;
+    list-style: none;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .searchForm {
     flex-direction: row;

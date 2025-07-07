@@ -21,6 +21,20 @@ function Hero() {
         />
         <Button variant='secondary'>Search</Button>
       </form>
+      <div className={styles.categories}>
+        <h4 className={styles.categoryTitle}>Popular Categories:</h4>
+        <ul className={styles.categoryList}>
+          <li>
+            <a href='#'>Marketing</a>
+          </li>
+          <li>
+            <a href='#'>Design</a>
+          </li>
+          <li>
+            <a href='#'>Development</a>
+          </li>
+        </ul>
+      </div>
     </section>
   );
 }
