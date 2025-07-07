@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './FeatureCard.module.css';
 
 type FeatureCardProps = {
   icon: React.ReactNode;
@@ -8,12 +9,12 @@ type FeatureCardProps = {
 
 function FeatureCard({ icon, title, text }: FeatureCardProps) {
   return (
-    <article>
-      <div>
-        <span>{icon}</span>
+    <article className={styles.featureCard}>
+      <div className={styles.header}>
+        <span className={styles.icon}>{icon}</span>
         <h3>{title}</h3>
       </div>
-      <p>{text}</p>
+      <p className={styles.text}>{text}</p>
     </article>
   );
 }
