@@ -9,6 +9,15 @@
   font-weight: 700;
 }
 
+.jobCategories {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  row-gap: 10px;
+  max-width: 800px;
+  margin: auto;
+}
+
 @media screen and (min-width: 728px) {
   .title {
     font-size: 32px;
@@ -17,6 +26,13 @@
 
 @media screen and (min-width: 1024px) {
   .title {
-    font-size: 38px;
+    font-size: 36px;
+  }
+
+  .jobCategories {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
   }
 }

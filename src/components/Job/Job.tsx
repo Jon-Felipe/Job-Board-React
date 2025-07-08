@@ -12,7 +12,7 @@ function Job() {
       <h1 className={styles.title}>Find your favourite job</h1>
       <div className={styles.jobCategories}>
         {jobCategories.map((jobCategory) => (
-          <JobCategoryLink key={jobCategory.id} />
+          <JobCategoryLink key={jobCategory.id} title={jobCategory.title} />
         ))}
       </div>
     </section>
