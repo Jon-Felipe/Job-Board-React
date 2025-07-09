@@ -1,5 +1,10 @@
 import styles from './JobCard.module.css';
 
+// components
+import Tab from '../ui/Tab/Tab';
+import Button from '../ui/Button/Button';
+
+// extras
 import type { IJob } from '../../utils/types';
 
 type JobCardProps = {
@@ -7,7 +12,21 @@ type JobCardProps = {
 };
 
 function JobCard({ job }: JobCardProps) {
-  return <article className={styles.jobCard}>{job.title}</article>;
+  return (
+    <article className={styles.jobCard}>
+      <div className={styles.tabs}>
+        <Tab>{job.employmentType}</Tab>
+        <Tab>{job.location}</Tab>
+      </div>
+      <h3 className={styles.title}>{job.title}</h3>
+      <div className={styles.details}>
+        <p>{job.industry}</p>
+        <span>|</span>
+        <p>${job.salary}/year</p>
+      </div>
+      <Button>Apply Now</Button>
+    </article>
+  );
 }
 
 export default JobCard;
