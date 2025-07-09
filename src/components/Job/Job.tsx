@@ -5,7 +5,7 @@ import { FaTh, FaBars } from 'react-icons/fa';
 import JobCategoryLink from './JobCategoryLink';
 
 // extras
-import { jobCategories } from '../../utils/constants';
+import { jobCategories, jobs } from '../../utils/constants';
 
 function Job() {
   return (
@@ -28,6 +28,11 @@ function Job() {
             <FaTh />
           </button>
         </div>
+      </div>
+      <div className={styles.jobs}>
+        {jobs.map((job) => (
+          <h3 key={job.id}>{job.title}</h3>
+        ))}
       </div>
     </section>
   );

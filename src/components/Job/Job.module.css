@@ -51,6 +51,14 @@
   }
 }
 
+.jobs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  margin-top: 50px;
+}
+
 @media screen and (min-width: 728px) {
   .title {
     font-size: 32px;
@@ -67,5 +75,10 @@
     align-items: center;
     justify-content: center;
     column-gap: 10px;
+  }
+
+  .jobs {
+    flex-direction: row;
+    column-gap: 20px;
   }
 }
