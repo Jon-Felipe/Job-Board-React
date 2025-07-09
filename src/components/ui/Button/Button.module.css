@@ -40,6 +40,15 @@
   background-color: #b91c1c;
 }
 
+.inverted {
+  background-color: #1d2445;
+  color: #e5e7eb;
+}
+
+.inverted:hover {
+  opacity: 0.8;
+}
+
 .disabled {
   opacity: 0.5;
   cursor: not-allowed;

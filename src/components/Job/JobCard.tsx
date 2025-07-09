@@ -25,7 +25,7 @@ function JobCard({ job }: JobCardProps) {
         <span>|</span>
         <p>${job.salary}/year</p>
       </div>
-      <Button>Apply Now</Button>
+      <Button variant='inverted'>Apply Now</Button>
     </article>
   );
 }
