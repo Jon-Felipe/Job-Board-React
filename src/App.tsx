@@ -1,18 +1,16 @@
-// components
-import Header from './components/Header/Header';
-import Hero from './components/Hero/Hero';
-import About from './components/About/About';
-import Job from './components/Job/Job';
+import { BrowserRouter, Routes, Route } from 'react-router';
+
+// pages
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
     <>
-      <Header title='Job Board' />
-      <main>
-        <Hero />
-        <About />
-        <Job />
-      </main>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
