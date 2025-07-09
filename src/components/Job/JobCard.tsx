@@ -24,7 +24,8 @@ function JobCard({ job }: JobCardProps) {
         <p>{job.industry}</p>
         <span>|</span>
         <p>
-          ${job.salaryFrom} - ${job.salaryTo}/year
+          ${job.salaryFrom?.toLocaleString()} - $
+          {job.salaryTo?.toLocaleString()}/year
         </p>
       </div>
       <Button variant='inverted'>Apply Now</Button>
