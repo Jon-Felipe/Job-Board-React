@@ -1,9 +1,16 @@
+import React from 'react';
+import styles from './Tab.module.css';
+
 type TabProps = {
-  text: string;
+  children: React.ReactNode;
 };
 
-function Tab({ text }: TabProps) {
-  return <div>{text}</div>;
+function Tab({ children }: TabProps) {
+  return (
+    <div className={styles.tab}>
+      <p className={styles.text}>{children}</p>
+    </div>
+  );
 }
 
 export default Tab;
