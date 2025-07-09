@@ -9,7 +9,8 @@ export interface IJob {
   description: string;
   company: string;
   location: string;
-  salary: number;
+  salaryFrom: number;
+  salaryTo: number;
   employmentType:
     | 'Full-time'
     | 'Part-time'
