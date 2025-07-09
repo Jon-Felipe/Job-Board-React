@@ -18,6 +18,7 @@ function JobCard({ job }: JobCardProps) {
         <Tab>{job.employmentType}</Tab>
         <Tab>{job.location}</Tab>
       </div>
+      <h5 className={styles.company}>{job.company}</h5>
       <h3 className={styles.title}>{job.title}</h3>
       <div className={styles.details}>
         <p>{job.industry}</p>
