@@ -1,5 +1,7 @@
-import { Link } from 'react-router';
 import { FaBars } from 'react-icons/fa';
+
+// components
+import LinkButton from '../ui/LinkButton/LinkButton';
 
 // extras
 import styles from './Header.module.css';
@@ -28,7 +30,7 @@ function Header({ title }: HeaderProps) {
             Location
           </a>
         </nav>
-        <Link to='/login'>Login / Sign Up</Link>
+        <LinkButton path='/login'>Login / Sign Up</LinkButton>
         <FaBars className={styles.menuIcon} />
       </div>
     </header>
