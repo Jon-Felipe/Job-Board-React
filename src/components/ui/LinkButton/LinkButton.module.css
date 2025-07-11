@@ -21,3 +21,13 @@
   color: #1d2445;
   background-color: #f4f4f6;
 }
+
+.secondary {
+  background-color: #f4f4f6;
+  color: #1d2445;
+}
+
+.secondary:hover {
+  background-color: #1d2445;
+  color: #f4f4f6;
+}

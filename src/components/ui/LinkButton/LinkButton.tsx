@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 // extras
 import styles from './LinkButton.module.css';
 
-type Variant = 'primary';
+type Variant = 'primary' | 'secondary';
 
 type LinkButtonProps = {
   path: string;
