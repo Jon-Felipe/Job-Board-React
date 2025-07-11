@@ -1,0 +1,13 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.title {
+  text-transform: capitalize;
+  margin-top: 10px;
+  font-size: 38px;
+  font-weight: 700;
+}
