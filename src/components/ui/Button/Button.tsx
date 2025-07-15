@@ -17,14 +17,13 @@ function Button({
   variant = 'primary',
   disabled = false,
   isLoading = false,
-  ...props
 }: ButtonProps) {
   const isDisabled = isLoading || disabled;
 
   const cssClasses = [styles.button, styles[variant]].join(' ');
 
   return (
-    <button className={cssClasses} disabled={isDisabled} {...props}>
+    <button className={cssClasses} disabled={isDisabled}>
       {isLoading ? 'Loading...' : children}
     </button>
   );
