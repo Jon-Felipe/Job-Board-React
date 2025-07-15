@@ -15,7 +15,6 @@ function Input({
   placeholder,
   value,
   onChange,
-  ...rest
 }: InputProps) {
   return (
     <input
@@ -26,7 +25,6 @@ function Input({
       value={value}
       onChange={onChange}
       className={styles.input}
-      {...rest}
     />
   );
 }
