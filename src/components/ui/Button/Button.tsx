@@ -5,7 +5,7 @@ import styles from './Button.module.css';
 
 type Variant = 'primary' | 'secondary' | 'danger' | 'inverted';
 
-type ButtonProps = {
+export type ButtonProps = {
   children: React.ReactNode;
   variant?: Variant;
   disabled?: boolean;
