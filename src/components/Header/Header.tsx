@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import { FaBars } from 'react-icons/fa';
 
 // components
@@ -13,22 +14,24 @@ type HeaderProps = {
 function Header({ title }: HeaderProps) {
   return (
     <header className={styles.header}>
-      <h1 className={styles.title}>{title}</h1>
+      <Link to='/'>
+        <h1 className={styles.title}>{title}</h1>
+      </Link>
 
       <div className={styles.actionsContainer}>
         <nav className={styles.navLinks}>
-          <a href='#' className={styles.navLink}>
+          <Link to='/' className={styles.navLink}>
             Home
-          </a>
-          <a href='#' className={styles.navLink}>
+          </Link>
+          <Link to='/' className={styles.navLink}>
             Jobs
-          </a>
-          <a href='#' className={styles.navLink}>
+          </Link>
+          <Link to='/' className={styles.navLink}>
             Categories
-          </a>
-          <a href='#' className={styles.navLink}>
+          </Link>
+          <Link to='/' className={styles.navLink}>
             Location
-          </a>
+          </Link>
         </nav>
         <LinkButton path='/login'>Login / Sign Up</LinkButton>
         <FaBars className={styles.menuIcon} />
