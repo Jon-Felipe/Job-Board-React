@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Input.module.css';
 
 type InputProps = {
   type: React.InputHTMLAttributes<HTMLInputElement>['type'];
@@ -24,6 +25,7 @@ function Input({
       name={name}
       value={value}
       onChange={onChange}
+      className={styles.input}
       {...rest}
     />
   );
