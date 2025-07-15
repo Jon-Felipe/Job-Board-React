@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Input.module.css';
 
-type InputProps = {
+export type InputProps = {
   type: React.InputHTMLAttributes<HTMLInputElement>['type'];
   name: React.InputHTMLAttributes<HTMLInputElement>['name'];
   value: React.InputHTMLAttributes<HTMLInputElement>['value'];
