@@ -3,13 +3,6 @@
   border: 1px solid rgba(29, 36, 69, 0.1);
   border-radius: 10px;
   padding: 20px;
-
-  button {
-    padding: 12px 20px;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
 }
 
 .tabs {
