@@ -49,6 +49,16 @@
   opacity: 0.8;
 }
 
+.text {
+  background-color: transparent;
+  color: #1d2445;
+  text-decoration: underline;
+}
+
+.text:hover {
+  opacity: 0.8;
+}
+
 .disabled {
   opacity: 0.5;
   cursor: not-allowed;

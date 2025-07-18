@@ -3,7 +3,7 @@ import React from 'react';
 // extras
 import styles from './Button.module.css';
 
-type Variant = 'primary' | 'secondary' | 'danger' | 'inverted';
+type Variant = 'primary' | 'secondary' | 'danger' | 'inverted' | 'text';
 
 export type ButtonProps = {
   children: React.ReactNode;
