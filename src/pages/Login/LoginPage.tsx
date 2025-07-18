@@ -1,12 +1,34 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './LoginPage.module.css';
 
 // components
 import Button from '../../components/ui/Button/Button';
 import Input from '../../components/ui/Input/Input';
 
+interface ISignUpDetails {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
 function LoginPage() {
   const [isSignUp, setIsSignUp] = useState<boolean>(false);
+  const [signUpDetails, setSignUpDetails] = useState<ISignUpDetails>({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setSignUpDetails((prevState) => {
+      return { ...prevState, [name]: value };
+    });
+  }
 
   return (
     <main className={styles.login}>
@@ -16,32 +38,32 @@ function LoginPage() {
           <Input
             type='text'
             name='name'
-            value=''
+            value={signUpDetails.name}
             placeholder='Name'
-            onChange={() => console.log('name')}
+            onChange={handleOnChange}
           />
         )}
         <Input
           type='email'
           name='email'
-          value=''
+          value={signUpDetails.email}
           placeholder='Email'
-          onChange={() => console.log('email')}
+          onChange={handleOnChange}
         />
         <Input
           type='password'
           name='password'
-          value=''
+          value={signUpDetails.password}
           placeholder='Password'
-          onChange={() => console.log('password')}
+          onChange={handleOnChange}
         />
         {isSignUp && (
           <Input
             type='password'
             name='confirmPassword'
-            value=''
+            value={signUpDetails.confirmPassword}
             placeholder='Confirm Password'
-            onChange={() => console.log('confirmPassword')}
+            onChange={handleOnChange}
           />
         )}
         <Button variant='inverted' onClick={() => console.log('Sign In')}>
