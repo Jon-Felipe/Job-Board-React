@@ -17,3 +17,14 @@
   width: 100%;
   max-width: 450px;
 }
+
+.signUp {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  margin-top: 10px;
+
+  p {
+    margin-bottom: 0;
+  }
+}

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './LoginPage.module.css';
 
 // components
@@ -5,6 +6,8 @@ import Button from '../../components/ui/Button/Button';
 import Input from '../../components/ui/Input/Input';
 
 function LoginPage() {
+  const [isSignUp, setIsSignUp] = useState<boolean>(false);
+
   return (
     <main className={styles.login}>
       <h3 className={styles.title}>Job Board</h3>
@@ -23,8 +26,16 @@ function LoginPage() {
           placeholder='Password'
           onChange={() => console.log('password')}
         />
-        <Button variant='inverted'>Sign In</Button>
+        <Button variant='inverted' onClick={() => console.log('Sign In')}>
+          Sign {isSignUp ? 'In' : 'Up'}
+        </Button>
       </form>
+      <div className={styles.signUp}>
+        <p>{isSignUp ? 'Already' : "Don't"} have an account?</p>
+        <Button variant='text' onClick={() => setIsSignUp(!isSignUp)}>
+          Sign {isSignUp ? 'In' : 'Up'}
+        </Button>
+      </div>
     </main>
   );
 }
