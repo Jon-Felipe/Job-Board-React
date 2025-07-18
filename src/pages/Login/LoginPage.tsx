@@ -12,6 +12,15 @@ function LoginPage() {
     <main className={styles.login}>
       <h3 className={styles.title}>Job Board</h3>
       <form className={styles.form}>
+        {isSignUp && (
+          <Input
+            type='text'
+            name='name'
+            value=''
+            placeholder='Name'
+            onChange={() => console.log('name')}
+          />
+        )}
         <Input
           type='email'
           name='email'
@@ -26,6 +35,15 @@ function LoginPage() {
           placeholder='Password'
           onChange={() => console.log('password')}
         />
+        {isSignUp && (
+          <Input
+            type='password'
+            name='confirmPassword'
+            value=''
+            placeholder='Confirm Password'
+            onChange={() => console.log('confirmPassword')}
+          />
+        )}
         <Button variant='inverted' onClick={() => console.log('Sign In')}>
           Sign {isSignUp ? 'In' : 'Up'}
         </Button>
