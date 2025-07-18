@@ -53,6 +53,8 @@
   background-color: transparent;
   color: #1d2445;
   text-decoration: underline;
+  padding: 0;
+  width: unset;
 }
 
 .text:hover {
