@@ -45,7 +45,7 @@ function LoginPage() {
           />
         )}
         <Button variant='inverted' onClick={() => console.log('Sign In')}>
-          Sign {isSignUp ? 'In' : 'Up'}
+          Sign {isSignUp ? 'Up' : 'In'}
         </Button>
       </form>
       <div className={styles.signUp}>
