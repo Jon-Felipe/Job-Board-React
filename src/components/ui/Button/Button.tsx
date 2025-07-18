@@ -7,6 +7,7 @@ type Variant = 'primary' | 'secondary' | 'danger' | 'inverted' | 'text';
 
 export type ButtonProps = {
   children: React.ReactNode;
+  onClick: () => void;
   variant?: Variant;
   disabled?: boolean;
   isLoading?: boolean;
@@ -14,6 +15,7 @@ export type ButtonProps = {
 
 function Button({
   children,
+  onClick,
   variant = 'primary',
   disabled = false,
   isLoading = false,
@@ -23,7 +25,7 @@ function Button({
   const cssClasses = [styles.button, styles[variant]].join(' ');
 
   return (
-    <button className={cssClasses} disabled={isDisabled}>
+    <button onClick={onClick} className={cssClasses} disabled={isDisabled}>
       {isLoading ? 'Loading...' : children}
     </button>
   );
