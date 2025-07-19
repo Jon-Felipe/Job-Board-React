@@ -28,7 +28,9 @@ function JobCard({ job }: JobCardProps) {
           {job.salaryTo?.toLocaleString()}/year
         </p>
       </div>
-      <Button variant='inverted'>Apply Now</Button>
+      <Button variant='inverted' onClick={() => console.log('Apply Now')}>
+        Apply Now
+      </Button>
     </article>
   );
 }

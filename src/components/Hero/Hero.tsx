@@ -19,7 +19,9 @@ function Hero() {
           value=''
           onChange={() => console.log('onChange')}
         />
-        <Button variant='secondary'>Search</Button>
+        <Button variant='secondary' onClick={() => console.log('search')}>
+          Search
+        </Button>
       </form>
       <div className={styles.categories}>
         <h4 className={styles.categoryTitle}>Popular Categories:</h4>
