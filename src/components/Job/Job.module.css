@@ -40,14 +40,20 @@
   column-gap: 14px;
 
   button {
-    background: none;
     border: none;
     cursor: pointer;
+    padding: 10px;
+    background-color: transparent;
 
     svg {
       width: 20px;
       height: 20px;
     }
+  }
+
+  .isActive {
+    background-color: #fff;
+    border-radius: 6px;
   }
 }
 

@@ -1,4 +1,4 @@
-import styles from './Job.module.css';
+import { useState } from 'react';
 import { FaTh, FaBars } from 'react-icons/fa';
 
 // components
@@ -6,9 +6,12 @@ import JobCategoryLink from './JobCategoryLink';
 import JobCard from './JobCard';
 
 // extras
+import styles from './Job.module.css';
 import { jobCategories, jobs } from '../../utils/constants';
 
 function Job() {
+  const [isCardView, setIsCardView] = useState<boolean>(true);
+
   return (
     <section className={styles.job}>
       <h1 className={styles.title}>Find your favourite job</h1>
@@ -22,10 +25,16 @@ function Job() {
           View All Jobs
         </a>
         <div className={styles.jobLayoutButtons}>
-          <button>
+          <button
+            onClick={() => setIsCardView(false)}
+            className={!isCardView ? styles.isActive : ''}
+          >
             <FaBars />
           </button>
-          <button>
+          <button
+            onClick={() => setIsCardView(true)}
+            className={isCardView ? styles.isActive : ''}
+          >
             <FaTh />
           </button>
         </div>
