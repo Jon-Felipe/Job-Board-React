@@ -1,32 +1,53 @@
-import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 import Button, { type ButtonProps } from './Button';
 
 describe('Input Component', () => {
-  const buttonProps: ButtonProps = {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  const createButtonProps = (
+    overrides: Partial<ButtonProps> = {}
+  ): ButtonProps => ({
     children: 'Click Me',
+    onClick: vi.fn(),
     variant: 'primary',
     disabled: false,
     isLoading: false,
-  };
+    ...overrides,
+  });
 
   it('should render button component with correct props', () => {
+    const buttonProps = createButtonProps();
     render(<Button {...buttonProps} />);
-    const button = screen.getByRole('button') as HTMLButtonElement;
+    const button = screen.getByRole('button');
 
     expect(button).toBeInTheDocument();
+    expect(button).toHaveTextContent('Click Me');
+  });
+
+  it('should let user click button', () => {
+    const buttonProps = createButtonProps();
+    render(<Button {...buttonProps} />);
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+
+    expect(buttonProps.onClick).toBeCalledTimes(1);
   });
 
   it('should render button as disabled if disabled prop is true', () => {
-    render(<Button {...buttonProps} disabled={true} />);
-    const button = screen.getByRole('button') as HTMLButtonElement;
+    const buttonProps = createButtonProps({ disabled: true });
+    render(<Button {...buttonProps} />);
+    const button = screen.getByRole('button');
 
-    expect(button.disabled).toBeTruthy();
+    expect(button).toBeDisabled();
   });
 
   it('should render button loading text if loading prop is true', () => {
-    render(<Button {...buttonProps} isLoading={true} />);
-    const button = screen.getByRole('button') as HTMLButtonElement;
+    const buttonProps = createButtonProps({ isLoading: true });
+    render(<Button {...buttonProps} />);
+    const button = screen.getByRole('button');
 
     expect(button.textContent).toBe('Loading...');
   });
