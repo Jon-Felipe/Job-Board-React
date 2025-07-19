@@ -40,12 +40,12 @@ function Job() {
           </button>
         </div>
       </div>
-      <div className={styles.jobs}>
+      <div className={isCardView ? styles.jobCards : styles.jobTiles}>
         {jobs.map((job) =>
           isCardView ? (
             <JobCard key={job.id} job={job} />
           ) : (
-            <JobTile key={job.id} />
+            <JobTile key={job.id} job={job} />
           )
         )}
       </div>
