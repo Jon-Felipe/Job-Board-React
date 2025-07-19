@@ -4,6 +4,7 @@ import { FaTh, FaBars } from 'react-icons/fa';
 // components
 import JobCategoryLink from './JobCategoryLink';
 import JobCard from './JobCard';
+import JobTile from './JobTile';
 
 // extras
 import styles from './Job.module.css';
@@ -40,9 +41,13 @@ function Job() {
         </div>
       </div>
       <div className={styles.jobs}>
-        {jobs.map((job) => (
-          <JobCard key={job.id} job={job} />
-        ))}
+        {jobs.map((job) =>
+          isCardView ? (
+            <JobCard key={job.id} job={job} />
+          ) : (
+            <JobTile key={job.id} />
+          )
+        )}
       </div>
     </section>
   );
