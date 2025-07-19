@@ -7,7 +7,8 @@ import { jobs } from '../../utils/constants';
 
 function JobsPage() {
   return (
-    <main>
+    <main className={styles.jobsContainer}>
+      <section className={styles.filters}>filters</section>
       <section className={styles.jobs}>
         {jobs.map((job) => (
           <JobCard key={job.id} job={job} />
