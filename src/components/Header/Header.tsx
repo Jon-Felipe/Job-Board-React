@@ -23,7 +23,7 @@ function Header({ title }: HeaderProps) {
           <Link to='/' className={styles.navLink}>
             Home
           </Link>
-          <Link to='/' className={styles.navLink}>
+          <Link to='/jobs' className={styles.navLink}>
             Jobs
           </Link>
           <Link to='/' className={styles.navLink}>
