@@ -7,13 +7,21 @@ import { jobs } from '../../utils/constants';
 
 function JobsPage() {
   return (
-    <main className={styles.jobsContainer}>
-      <section className={styles.filters}>filters</section>
-      <section className={styles.jobs}>
-        {jobs.map((job) => (
-          <JobCard key={job.id} job={job} />
-        ))}
+    <main>
+      <section className={styles.header}>
+        <h3 className={styles.title}>Find Your Favourite Job</h3>
+        <p className={styles.text}>
+          Find jobs, create trackable resumes and enrich your applications
+        </p>
       </section>
+      <div className={styles.jobsContainer}>
+        <section className={styles.filters}>filters</section>
+        <section className={styles.jobs}>
+          {jobs.map((job) => (
+            <JobCard key={job.id} job={job} />
+          ))}
+        </section>
+      </div>
     </main>
   );
 }

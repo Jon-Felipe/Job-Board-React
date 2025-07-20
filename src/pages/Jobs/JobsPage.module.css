@@ -1,3 +1,20 @@
+.header {
+  background-color: #fff;
+  text-align: center;
+  padding: 40px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.text {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1d2445;
+}
+
 .jobsContainer {
   display: grid;
   row-gap: 20px;
@@ -19,6 +36,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .title {
+    font-size: 44px;
+  }
+
   .jobs {
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
