@@ -1,4 +1,5 @@
 // components
+import Dropdown from '../../components/Dropdown/Dropdown';
 import JobCard from '../../components/Job/JobCard';
 
 // extras
@@ -15,7 +16,10 @@ function JobsPage() {
         </p>
       </section>
       <div className={styles.jobsContainer}>
-        <section className={styles.filters}>filters</section>
+        <section className={styles.filters}>
+          <h4>Filters</h4>
+          <Dropdown />
+        </section>
         <section className={styles.jobs}>
           {jobs.map((job) => (
             <JobCard key={job.id} job={job} />
