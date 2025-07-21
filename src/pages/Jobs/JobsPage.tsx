@@ -4,7 +4,7 @@ import JobCard from '../../components/Job/JobCard';
 
 // extras
 import styles from './JobsPage.module.css';
-import { jobs } from '../../utils/constants';
+import { dropdownOptions, jobs } from '../../utils/constants';
 
 function JobsPage() {
   return (
@@ -18,7 +18,7 @@ function JobsPage() {
       <div className={styles.jobsContainer}>
         <section className={styles.filters}>
           <h4>Filters</h4>
-          <Dropdown />
+          <Dropdown title='Job Types' dropdownOptions={dropdownOptions} />
         </section>
         <section className={styles.jobs}>
           {jobs.map((job) => (

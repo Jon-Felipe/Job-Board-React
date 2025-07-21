@@ -23,3 +23,8 @@ export interface IJob {
   experienceLevel: 'Entry' | 'Mid' | 'Senior';
   industry: string;
 }
+
+export interface IDropdownOptions {
+  id: number;
+  text: string;
+}

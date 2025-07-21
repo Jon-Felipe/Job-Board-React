@@ -1,4 +1,4 @@
-import type { IJob, IJobCategory } from './types';
+import type { IDropdownOptions, IJob, IJobCategory } from './types';
 
 export const jobCategories: IJobCategory[] = [
   {
@@ -184,5 +184,24 @@ export const jobs: IJob[] = [
     remote: true,
     experienceLevel: 'Entry',
     industry: 'Startup',
+  },
+];
+
+export const dropdownOptions: IDropdownOptions[] = [
+  {
+    id: 1,
+    text: 'Full-Time',
+  },
+  {
+    id: 2,
+    text: 'Part-Time',
+  },
+  {
+    id: 3,
+    text: 'Internship',
+  },
+  {
+    id: 4,
+    text: 'Freelance',
   },
 ];
