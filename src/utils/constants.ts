@@ -187,7 +187,7 @@ export const jobs: IJob[] = [
   },
 ];
 
-export const dropdownOptions: IDropdownOption[] = [
+export const jobTypes: IDropdownOption[] = [
   {
     id: 1,
     text: 'Full-Time',
@@ -203,5 +203,20 @@ export const dropdownOptions: IDropdownOption[] = [
   {
     id: 4,
     text: 'Freelance',
+  },
+];
+
+export const experienceLevel: IDropdownOption[] = [
+  {
+    id: 1,
+    text: 'Entry',
+  },
+  {
+    id: 2,
+    text: 'Mid',
+  },
+  {
+    id: 3,
+    text: 'Senior',
   },
 ];
