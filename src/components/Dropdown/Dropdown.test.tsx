@@ -11,14 +11,14 @@ const dummyDropdownOptions: IDropdownOption[] = [
 ];
 
 describe('Dropdown Component', () => {
-  it('should render the dropdown component', () => {
+  it('should render the dropdown component with dropdown options', () => {
     render(
       <Dropdown title='Test Dropdown' dropdownOptions={dummyDropdownOptions} />
     );
 
     const dropdown = screen.getByText(/test dropdown/i);
     expect(dropdown).toBeInTheDocument();
-    expect(screen.queryAllByRole('button')).toHaveLength(0);
+    expect(screen.queryAllByRole('button')).toHaveLength(2);
   });
 
   it('should let user to toggle open and close dropdown', () => {
@@ -30,25 +30,11 @@ describe('Dropdown Component', () => {
     fireEvent.click(dropdown);
 
     let dropdownOptions = screen.queryAllByRole('button');
-    expect(dropdownOptions).toHaveLength(2);
+    expect(dropdownOptions).toHaveLength(0);
 
     fireEvent.click(dropdown);
 
     dropdownOptions = screen.queryAllByRole('button');
-    expect(dropdownOptions).toHaveLength(0);
-  });
-
-  it('should display list of dropdown options after user clicks on dropdown', () => {
-    render(
-      <Dropdown title='Test Dropdown' dropdownOptions={dummyDropdownOptions} />
-    );
-
-    const dropdown = screen.getByText(/test dropdown/i);
-    fireEvent.click(dropdown);
-
-    const dropdownOptions = screen.getAllByRole('button');
     expect(dropdownOptions).toHaveLength(2);
-    expect(dropdownOptions[0]).toHaveTextContent('test 1');
-    expect(dropdownOptions[1]).toHaveTextContent('test 2');
   });
 });

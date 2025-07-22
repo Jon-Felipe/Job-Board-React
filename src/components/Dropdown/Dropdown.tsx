@@ -11,7 +11,7 @@ type DropdownProps = {
 };
 
 function Dropdown({ title, dropdownOptions }: DropdownProps) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(true);
 
   return (
     <div>
