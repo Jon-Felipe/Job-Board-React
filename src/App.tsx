@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/Login/LoginPage';
 import RootLayout from './pages/Layouts/RootLayout';
 import JobsPage from './pages/Jobs/JobsPage';
+import JobPage from './pages/Job/JobPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/jobs' element={<JobsPage />} />
+            <Route path='/jobs/:id' element={<JobPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
