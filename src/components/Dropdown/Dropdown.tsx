@@ -29,9 +29,9 @@ function Dropdown({ title, dropdownOptions }: DropdownProps) {
       {isDropdownOpen && (
         <div className={styles.dropdownOptions}>
           {dropdownOptions.map((option) => (
-            <p key={option.id} className={styles.option}>
+            <button key={option.id} className={styles.option}>
               {option.text}
-            </p>
+            </button>
           ))}
         </div>
       )}
