@@ -1,14 +1,13 @@
-import styles from './JobCard.module.css';
-
 // components
 import Tab from '../ui/Tab/Tab';
-import Button from '../ui/Button/Button';
 
 // extras
+import styles from './JobCard.module.css';
 import type { IJob } from '../../utils/types';
+import LinkButton from '../ui/LinkButton/LinkButton';
 
 type JobCardProps = {
-  job: Partial<IJob>;
+  job: IJob;
 };
 
 function JobCard({ job }: JobCardProps) {
@@ -28,9 +27,9 @@ function JobCard({ job }: JobCardProps) {
           {job.salaryTo?.toLocaleString()}/year
         </p>
       </div>
-      <Button variant='inverted' onClick={() => console.log('Apply Now')}>
+      <LinkButton variant='primary' path={job.id}>
         Apply Now
-      </Button>
+      </LinkButton>
     </article>
   );
 }
