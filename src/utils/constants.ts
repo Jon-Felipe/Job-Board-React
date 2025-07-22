@@ -1,4 +1,4 @@
-import type { IDropdownOptions, IJob, IJobCategory } from './types';
+import type { IDropdownOption, IJob, IJobCategory } from './types';
 
 export const jobCategories: IJobCategory[] = [
   {
@@ -187,7 +187,7 @@ export const jobs: IJob[] = [
   },
 ];
 
-export const dropdownOptions: IDropdownOptions[] = [
+export const dropdownOptions: IDropdownOption[] = [
   {
     id: 1,
     text: 'Full-Time',

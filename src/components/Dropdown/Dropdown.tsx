@@ -3,11 +3,11 @@ import { FaCaretRight, FaCaretDown } from 'react-icons/fa';
 
 // extras
 import styles from './Dropdown.module.css';
-import type { IDropdownOptions } from '../../utils/types';
+import type { IDropdownOption } from '../../utils/types';
 
 type DropdownProps = {
   title: string;
-  dropdownOptions: IDropdownOptions[];
+  dropdownOptions: IDropdownOption[];
 };
 
 function Dropdown({ title, dropdownOptions }: DropdownProps) {

@@ -24,7 +24,7 @@ export interface IJob {
   industry: string;
 }
 
-export interface IDropdownOptions {
+export interface IDropdownOption {
   id: number;
   text: string;
 }
