@@ -1,5 +1,6 @@
 // components
 import Dropdown from '../../components/Dropdown/Dropdown';
+import Button from '../../components/ui/Button/Button';
 import JobCard from '../../components/Job/JobCard';
 
 // extras
@@ -25,6 +26,9 @@ function JobsPage() {
               dropdownOptions={experienceLevel}
             />
           </div>
+          <Button variant='danger' onClick={() => console.log('clear')}>
+            Clear Filters
+          </Button>
         </section>
         <section className={styles.jobs}>
           {jobs.map((job) => (
