@@ -27,7 +27,7 @@ function JobCard({ job }: JobCardProps) {
           {job.salaryTo?.toLocaleString()}/year
         </p>
       </div>
-      <LinkButton variant='primary' path={job.id}>
+      <LinkButton variant='primary' path={`/jobs/${job.id}`}>
         Apply Now
       </LinkButton>
     </article>
