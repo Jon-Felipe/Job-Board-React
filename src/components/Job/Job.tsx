@@ -3,6 +3,7 @@ import { FaTh, FaBars } from 'react-icons/fa';
 
 // components
 import JobCategoryLink from './JobCategoryLink';
+import LinkButton from '../ui/LinkButton/LinkButton';
 import JobCard from './JobCard';
 import JobTile from './JobTile';
 
@@ -22,9 +23,9 @@ function Job() {
         ))}
       </div>
       <div className={styles.jobsListActions}>
-        <a href='#' className={styles.viewAllJobsLink}>
+        <LinkButton variant='text' path='jobs'>
           View All Jobs
-        </a>
+        </LinkButton>
         <div className={styles.jobLayoutButtons}>
           <button
             onClick={() => setIsCardView(false)}
