@@ -6,7 +6,8 @@ import Button from '../../components/ui/Button/Button';
 import Input from '../../components/ui/Input/Input';
 
 interface ISignUpDetails {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -15,7 +16,8 @@ interface ISignUpDetails {
 function LoginPage() {
   const [isSignUp, setIsSignUp] = useState<boolean>(false);
   const [signUpDetails, setSignUpDetails] = useState<ISignUpDetails>({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -35,13 +37,22 @@ function LoginPage() {
       <h3 className={styles.title}>Job Board</h3>
       <form className={styles.form}>
         {isSignUp && (
-          <Input
-            type='text'
-            name='name'
-            value={signUpDetails.name}
-            placeholder='Name'
-            onChange={handleOnChange}
-          />
+          <>
+            <Input
+              type='text'
+              name='firstName'
+              value={signUpDetails.firstName}
+              placeholder='First Name'
+              onChange={handleOnChange}
+            />
+            <Input
+              type='text'
+              name='lastName'
+              value={signUpDetails.lastName}
+              placeholder='Last Name'
+              onChange={handleOnChange}
+            />
+          </>
         )}
         <Input
           type='email'

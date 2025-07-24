@@ -35,13 +35,15 @@ describe('Login Page', () => {
 
     fireEvent.click(signUpButton);
 
-    const nameInput = screen.getByPlaceholderText(/name/i);
+    const firstNameInput = screen.getByPlaceholderText(/first name/i);
+    const lastNameInput = screen.getByPlaceholderText(/last name/i);
     const emailInput = screen.getByPlaceholderText(/email/i);
     const passwordInput = screen.getByPlaceholderText(/^password$/i);
     const confirmPasswordInput =
       screen.getByPlaceholderText(/^confirm password$/i);
 
-    expect(nameInput).toBeInTheDocument();
+    expect(firstNameInput).toBeInTheDocument();
+    expect(lastNameInput).toBeInTheDocument();
     expect(emailInput).toBeInTheDocument();
     expect(passwordInput).toBeInTheDocument();
     expect(confirmPasswordInput).toBeInTheDocument();
@@ -54,18 +56,21 @@ describe('Login Page', () => {
 
     fireEvent.click(signUpButton);
 
-    const nameInput = screen.getByPlaceholderText(/name/i);
+    const firstNameInput = screen.getByPlaceholderText(/first name/i);
+    const lastNameInput = screen.getByPlaceholderText(/last name/i);
     const emailInput = screen.getByPlaceholderText(/email/i);
     const passwordInput = screen.getByPlaceholderText(/^password$/i);
     const confirmPasswordInput =
       screen.getByPlaceholderText(/^confirm password$/i);
 
-    fireEvent.change(nameInput, { target: { value: 'John Doe' } });
+    fireEvent.change(firstNameInput, { target: { value: 'John' } });
+    fireEvent.change(lastNameInput, { target: { value: 'Doe' } });
     fireEvent.change(emailInput, { target: { value: 'john@gmail.com' } });
     fireEvent.change(passwordInput, { target: { value: '123456' } });
     fireEvent.change(confirmPasswordInput, { target: { value: '123456' } });
 
-    expect(nameInput).toHaveValue('John Doe');
+    expect(firstNameInput).toHaveValue('John');
+    expect(lastNameInput).toHaveValue('Doe');
     expect(emailInput).toHaveValue('john@gmail.com');
     expect(passwordInput).toHaveValue('123456');
     expect(confirmPasswordInput).toHaveValue('123456');
