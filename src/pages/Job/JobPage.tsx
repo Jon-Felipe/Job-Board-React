@@ -1,8 +1,12 @@
 import { useParams } from 'react-router';
 
+// components
+import Input from '../../components/ui/Input/Input';
+
 // extras
 import styles from './JobPage.module.css';
 import { jobs } from '../../utils/constants';
+import Button from '../../components/ui/Button/Button';
 
 function JobPage() {
   const params = useParams();
@@ -45,7 +49,44 @@ function JobPage() {
         </div>
       </section>
       <section className={`${styles.card} ${styles.form}`}>
-        application form
+        <h4 className={styles.applicationTitle}>Apply for this job</h4>
+        <form>
+          <Input
+            type='text'
+            name='name'
+            value={''}
+            placeholder='Full Name'
+            onChange={() => console.log('name')}
+          />
+          <Input
+            type='email'
+            name='email'
+            value={''}
+            placeholder='Email'
+            onChange={() => console.log('email')}
+          />
+          <Input
+            type='number'
+            name='number'
+            value={''}
+            placeholder='Phone Number'
+            onChange={() => console.log('number')}
+          />
+          <label htmlFor='cv' className={styles.cvLabel}>
+            <span>Upload your CV</span>
+            <input type='file' name='cv' id='cv' className={styles.cvInput} />
+          </label>
+          <textarea
+            name='cover'
+            id='cover'
+            rows={4}
+            placeholder='Cover Letter'
+            className={styles.coverLetter}
+          ></textarea>
+          <Button variant='primary' onClick={() => console.log('Apply Now')}>
+            Apply Now
+          </Button>
+        </form>
       </section>
     </main>
   );

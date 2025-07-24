@@ -100,6 +100,44 @@
   padding: 8px 12px;
 }
 
+.applicationTitle {
+  color: #05152e;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.cvLabel {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 2px solid #f4f4f6;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.cvLabel span {
+  margin-right: 10px;
+  font-weight: 700;
+}
+
+.coverLetter {
+  font-size: 16px;
+  padding: 10px;
+  border: 2px solid #f4f4f6;
+  border-radius: 8px;
+  width: 100%;
+  resize: none;
+  transition: border-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.coverLetter:focus {
+  border-color: #47505c;
+  outline: none;
+}
+
 @media screen and (min-width: 1024px) {
   .jobPage {
     grid-template-columns: 1fr 350px;
