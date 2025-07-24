@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styles from './LoginPage.module.css';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../../features/user/userSlice';
 
 // components
 import Button from '../../components/ui/Button/Button';
@@ -23,6 +25,8 @@ function LoginPage() {
     confirmPassword: '',
   });
 
+  const dispatch = useDispatch();
+
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     const name = e.target.name;
     const value = e.target.value;
@@ -32,10 +36,22 @@ function LoginPage() {
     });
   }
 
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    dispatch(
+      addUser({
+        firstName: signUpDetails.firstName,
+        lastName: signUpDetails.lastName,
+        email: signUpDetails.email,
+      })
+    );
+  }
+
   return (
     <main className={styles.login}>
       <h3 className={styles.title}>Job Board</h3>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         {isSignUp && (
           <>
             <Input
