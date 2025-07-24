@@ -1,10 +1,16 @@
 import { describe, it } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { store } from '../../store';
 import LoginPage from './LoginPage';
 
 describe('Login Page', () => {
   it('should render the login page', () => {
-    render(<LoginPage />);
+    render(
+      <Provider store={store}>
+        <LoginPage />
+      </Provider>
+    );
 
     const emailInput = screen.getByPlaceholderText(/email/i);
     const passwordInput = screen.getByPlaceholderText(/password/i);
@@ -16,7 +22,11 @@ describe('Login Page', () => {
   });
 
   it('should update email and password inputs when typing', () => {
-    render(<LoginPage />);
+    render(
+      <Provider store={store}>
+        <LoginPage />
+      </Provider>
+    );
 
     const emailInput = screen.getByPlaceholderText(/email/i);
     const passwordInput = screen.getByPlaceholderText(/password/i);
@@ -29,7 +39,11 @@ describe('Login Page', () => {
   });
 
   it('should render sign up inputs on sign up button click', () => {
-    render(<LoginPage />);
+    render(
+      <Provider store={store}>
+        <LoginPage />
+      </Provider>
+    );
 
     const signUpButton = screen.getByRole('button', { name: /sign up/i });
 
@@ -50,7 +64,11 @@ describe('Login Page', () => {
   });
 
   it('should handle sign up form text input', () => {
-    render(<LoginPage />);
+    render(
+      <Provider store={store}>
+        <LoginPage />
+      </Provider>
+    );
 
     const signUpButton = screen.getByRole('button', { name: /sign up/i });
 
