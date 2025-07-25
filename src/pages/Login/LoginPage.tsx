@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import styles from './LoginPage.module.css';
+import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { addUser } from '../../features/user/userSlice';
 
 // components
 import Button from '../../components/ui/Button/Button';
 import Input from '../../components/ui/Input/Input';
+
+// extras
+import styles from './LoginPage.module.css';
+import { addUser } from '../../features/user/userSlice';
 
 interface ISignUpDetails {
   firstName: string;
@@ -25,6 +28,7 @@ function LoginPage() {
     confirmPassword: '',
   });
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -46,6 +50,8 @@ function LoginPage() {
         email: signUpDetails.email,
       })
     );
+
+    navigate('/');
   }
 
   return (
