@@ -105,7 +105,7 @@ function LoginPage() {
             onChange={handleOnChange}
           />
         )}
-        <Button variant='inverted' onClick={() => console.log('Sign In')}>
+        <Button type='submit' variant='inverted'>
           Sign {isSignUp ? 'Up' : 'In'}
         </Button>
       </form>
