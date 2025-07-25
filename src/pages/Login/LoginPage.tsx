@@ -43,6 +43,12 @@ function LoginPage() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    const { password, confirmPassword } = signUpDetails;
+
+    if (password !== confirmPassword) {
+      return;
+    }
+
     dispatch(
       addUser({
         firstName: signUpDetails.firstName,
