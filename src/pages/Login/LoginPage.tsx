@@ -46,20 +46,27 @@ function LoginPage() {
     const { firstName, lastName, email, password, confirmPassword } =
       signUpDetails;
 
-    if (
-      !firstName.trim() ||
-      !lastName.trim() ||
-      !email.trim() ||
-      !password.trim() ||
-      !confirmPassword.trim()
-    ) {
-      alert('Please fill in all values');
-      return;
-    }
+    if (isSignUp) {
+      if (
+        !firstName.trim() ||
+        !lastName.trim() ||
+        !email.trim() ||
+        !password.trim() ||
+        !confirmPassword.trim()
+      ) {
+        alert('Please fill in all values');
+        return;
+      }
 
-    if (password !== confirmPassword) {
-      alert('Passwords must match');
-      return;
+      if (password !== confirmPassword) {
+        alert('Passwords must match');
+        return;
+      }
+    } else {
+      if (!email.trim() || !password.trim()) {
+        alert('Please fill in all values');
+        return;
+      }
     }
 
     dispatch(
