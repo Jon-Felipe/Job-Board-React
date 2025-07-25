@@ -172,4 +172,55 @@ describe('Login Page', () => {
 
     expect(mockNavigate).toHaveBeenCalledWith('/');
   });
+
+  it('should alert user if input fields are not filled in', () => {
+    const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {});
+
+    render(
+      <MemoryRouter>
+        <Provider store={store}>
+          <LoginPage />
+        </Provider>
+      </MemoryRouter>
+    );
+
+    const signInButton = screen.getByRole('button', { name: /sign in/i });
+    fireEvent.click(signInButton);
+
+    expect(alertSpy).toHaveBeenCalledWith('Please fill in all values');
+    alertSpy.mockRestore();
+  });
+
+  it('should alert user if passwords do not match', () => {
+    const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {});
+
+    render(
+      <MemoryRouter>
+        <Provider store={store}>
+          <LoginPage />
+        </Provider>
+      </MemoryRouter>
+    );
+
+    const signUpLink = screen.getByRole('button', { name: /sign up/i });
+    fireEvent.click(signUpLink);
+
+    const firstNameInput = screen.getByPlaceholderText(/first name/i);
+    const lastNameInput = screen.getByPlaceholderText(/last name/i);
+    const emailInput = screen.getByPlaceholderText(/email/i);
+    const passwordInput = screen.getByPlaceholderText(/^password$/i);
+    const confirmPasswordInput =
+      screen.getByPlaceholderText(/^confirm password$/i);
+    const signUpButton = screen.getByRole('button', { name: /sign up/i });
+
+    fireEvent.change(firstNameInput, { target: { value: 'John' } });
+    fireEvent.change(lastNameInput, { target: { value: 'Doe' } });
+    fireEvent.change(emailInput, { target: { value: 'john@gmail.com' } });
+    fireEvent.change(passwordInput, { target: { value: '123456' } });
+    fireEvent.change(confirmPasswordInput, { target: { value: '1234567' } });
+    fireEvent.click(signUpButton);
+
+    expect(alertSpy).toHaveBeenCalledWith('Passwords must match');
+    alertSpy.mockRestore();
+  });
 });
