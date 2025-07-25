@@ -93,4 +93,27 @@ describe('Login Page', () => {
     expect(passwordInput).toHaveValue('123456');
     expect(confirmPasswordInput).toHaveValue('123456');
   });
+
+  it.skip('should dispatch addUser action on form submit', () => {
+    const mockDispatch = jest.fn();
+    render(
+      <Provider store={store}>
+        <LoginPage />
+      </Provider>
+    );
+
+    const firstNameInput = screen.getByPlaceholderText(/first name/i);
+    const lastNameInput = screen.getByPlaceholderText(/last name/i);
+    const emailInput = screen.getByPlaceholderText(/email/i);
+    const signUpButton = screen.getByRole('button', { name: /sign up/i });
+
+    fireEvent.change(firstNameInput, { target: { value: 'John' } });
+    fireEvent.change(lastNameInput, { target: { value: 'Doe' } });
+    fireEvent.change(emailInput, { target: { value: 'john@gmail.com' } });
+    fireEvent.click(signUpButton);
+
+    expect(mockDispatch).toHaveBeenCalledWith(
+      expect.objectContaining({ type: 'user/addUser' })
+    );
+  });
 });
