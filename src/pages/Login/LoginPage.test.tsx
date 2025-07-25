@@ -24,6 +24,17 @@ vi.mock('react-redux', async () => {
 });
 
 describe('Login Page', () => {
+  const mockDispatch = vi.fn();
+  const mockNavigate = vi.fn();
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (useDispatch as any).mockReturnValue(mockDispatch);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (useNavigate as any).mockReturnValue(mockNavigate);
+  });
+
   it('should render the login page', () => {
     render(
       <MemoryRouter>
@@ -70,9 +81,9 @@ describe('Login Page', () => {
       </MemoryRouter>
     );
 
-    const signUpButton = screen.getByRole('button', { name: /sign up/i });
+    const signUpLink = screen.getByRole('button', { name: /sign up/i });
 
-    fireEvent.click(signUpButton);
+    fireEvent.click(signUpLink);
 
     const firstNameInput = screen.getByPlaceholderText(/first name/i);
     const lastNameInput = screen.getByPlaceholderText(/last name/i);
@@ -121,14 +132,7 @@ describe('Login Page', () => {
     expect(confirmPasswordInput).toHaveValue('123456');
   });
 
-  it('should dispatch addUser action on form submit', () => {
-    const navigate = vi.fn();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (useNavigate as any).mockReturnValue(navigate);
-    const mockDispatch = vi.fn();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (useDispatch as any).mockReturnValue(mockDispatch);
-
+  it('should dispatch addUser action on form submit and navigate to home page', () => {
     render(
       <MemoryRouter>
         <Provider store={store}>
@@ -138,38 +142,6 @@ describe('Login Page', () => {
     );
 
     const signUpLink = screen.getByRole('button', { name: /sign up/i });
-    fireEvent.click(signUpLink);
-
-    const firstNameInput = screen.getByPlaceholderText(/first name/i);
-    const lastNameInput = screen.getByPlaceholderText(/last name/i);
-    const emailInput = screen.getByPlaceholderText(/email/i);
-    const signUpButton = screen.getByRole('button', { name: /sign up/i });
-
-    fireEvent.change(firstNameInput, { target: { value: 'John' } });
-    fireEvent.change(lastNameInput, { target: { value: 'Doe' } });
-    fireEvent.change(emailInput, { target: { value: 'john@gmail.com' } });
-    fireEvent.click(signUpButton);
-
-    expect(mockDispatch).toHaveBeenCalledWith(
-      expect.objectContaining({ type: 'user/addUser' })
-    );
-  });
-
-  it('should navigate to home page after successful login', () => {
-    const navigate = vi.fn();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (useNavigate as any).mockReturnValue(navigate);
-
-    render(
-      <MemoryRouter>
-        <Provider store={store}>
-          <LoginPage />
-        </Provider>
-      </MemoryRouter>
-    );
-
-    const signUpLink = screen.getByRole('button', { name: /sign up/i });
-
     fireEvent.click(signUpLink);
 
     const firstNameInput = screen.getByPlaceholderText(/first name/i);
@@ -178,16 +150,26 @@ describe('Login Page', () => {
     const passwordInput = screen.getByPlaceholderText(/^password$/i);
     const confirmPasswordInput =
       screen.getByPlaceholderText(/^confirm password$/i);
+    const signUpButton = screen.getByRole('button', { name: /sign up/i });
 
     fireEvent.change(firstNameInput, { target: { value: 'John' } });
     fireEvent.change(lastNameInput, { target: { value: 'Doe' } });
     fireEvent.change(emailInput, { target: { value: 'john@gmail.com' } });
     fireEvent.change(passwordInput, { target: { value: '123456' } });
     fireEvent.change(confirmPasswordInput, { target: { value: '123456' } });
-
-    const signUpButton = screen.getByRole('button', { name: /sign up/i });
     fireEvent.click(signUpButton);
 
-    expect(navigate).toHaveBeenCalledWith('/');
+    expect(mockDispatch).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: 'user/addUser',
+        payload: {
+          firstName: 'John',
+          lastName: 'Doe',
+          email: 'john@gmail.com',
+        },
+      })
+    );
+
+    expect(mockNavigate).toHaveBeenCalledWith('/');
   });
 });
