@@ -43,9 +43,22 @@ function LoginPage() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const { password, confirmPassword } = signUpDetails;
+    const { firstName, lastName, email, password, confirmPassword } =
+      signUpDetails;
+
+    if (
+      !firstName.trim() ||
+      !lastName.trim() ||
+      !email.trim() ||
+      !password.trim() ||
+      !confirmPassword.trim()
+    ) {
+      alert('Please fill in all values');
+      return;
+    }
 
     if (password !== confirmPassword) {
+      alert('Passwords must match');
       return;
     }
 
