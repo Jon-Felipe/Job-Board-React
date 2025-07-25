@@ -6,6 +6,7 @@ import LoginPage from './pages/Login/LoginPage';
 import RootLayout from './pages/Layouts/RootLayout';
 import JobsPage from './pages/Jobs/JobsPage';
 import JobPage from './pages/Job/JobPage';
+import ProfilePage from './pages/Profile/ProfilePage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path='/login' element={<LoginPage />} />
             <Route path='/jobs' element={<JobsPage />} />
             <Route path='/jobs/:id' element={<JobPage />} />
+            <Route path='/profile' element={<ProfilePage />} />
           </Route>
         </Routes>
       </BrowserRouter>
