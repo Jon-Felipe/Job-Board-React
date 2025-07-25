@@ -1,15 +1,18 @@
 import { describe, it } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router';
 import { store } from '../../store';
 import LoginPage from './LoginPage';
 
 describe('Login Page', () => {
   it('should render the login page', () => {
     render(
-      <Provider store={store}>
-        <LoginPage />
-      </Provider>
+      <MemoryRouter>
+        <Provider store={store}>
+          <LoginPage />
+        </Provider>
+      </MemoryRouter>
     );
 
     const emailInput = screen.getByPlaceholderText(/email/i);
@@ -23,9 +26,11 @@ describe('Login Page', () => {
 
   it('should update email and password inputs when typing', () => {
     render(
-      <Provider store={store}>
-        <LoginPage />
-      </Provider>
+      <MemoryRouter>
+        <Provider store={store}>
+          <LoginPage />
+        </Provider>
+      </MemoryRouter>
     );
 
     const emailInput = screen.getByPlaceholderText(/email/i);
@@ -40,9 +45,11 @@ describe('Login Page', () => {
 
   it('should render sign up inputs on sign up button click', () => {
     render(
-      <Provider store={store}>
-        <LoginPage />
-      </Provider>
+      <MemoryRouter>
+        <Provider store={store}>
+          <LoginPage />
+        </Provider>
+      </MemoryRouter>
     );
 
     const signUpButton = screen.getByRole('button', { name: /sign up/i });
@@ -65,9 +72,11 @@ describe('Login Page', () => {
 
   it('should handle sign up form text input', () => {
     render(
-      <Provider store={store}>
-        <LoginPage />
-      </Provider>
+      <MemoryRouter>
+        <Provider store={store}>
+          <LoginPage />
+        </Provider>
+      </MemoryRouter>
     );
 
     const signUpButton = screen.getByRole('button', { name: /sign up/i });
@@ -97,9 +106,11 @@ describe('Login Page', () => {
   it.skip('should dispatch addUser action on form submit', () => {
     const mockDispatch = jest.fn();
     render(
-      <Provider store={store}>
-        <LoginPage />
-      </Provider>
+      <MemoryRouter>
+        <Provider store={store}>
+          <LoginPage />
+        </Provider>
+      </MemoryRouter>
     );
 
     const firstNameInput = screen.getByPlaceholderText(/first name/i);
