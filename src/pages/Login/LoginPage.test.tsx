@@ -1,9 +1,27 @@
-import { describe, it } from 'vitest';
+import { describe, it, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { MemoryRouter } from 'react-router';
+import { Provider, useDispatch } from 'react-redux';
+import { MemoryRouter, useNavigate } from 'react-router';
 import { store } from '../../store';
 import LoginPage from './LoginPage';
+
+vi.mock('react-router', async () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const actual = await vi.importActual<any>('react-router');
+  return {
+    ...actual,
+    useNavigate: vi.fn(),
+  };
+});
+
+vi.mock('react-redux', async () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const actual = await vi.importActual<any>('react-redux');
+  return {
+    ...actual,
+    useDispatch: vi.fn(),
+  };
+});
 
 describe('Login Page', () => {
   it('should render the login page', () => {
@@ -103,8 +121,14 @@ describe('Login Page', () => {
     expect(confirmPasswordInput).toHaveValue('123456');
   });
 
-  it.skip('should dispatch addUser action on form submit', () => {
-    const mockDispatch = jest.fn();
+  it('should dispatch addUser action on form submit', () => {
+    const navigate = vi.fn();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (useNavigate as any).mockReturnValue(navigate);
+    const mockDispatch = vi.fn();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (useDispatch as any).mockReturnValue(mockDispatch);
+
     render(
       <MemoryRouter>
         <Provider store={store}>
@@ -112,6 +136,9 @@ describe('Login Page', () => {
         </Provider>
       </MemoryRouter>
     );
+
+    const signUpLink = screen.getByRole('button', { name: /sign up/i });
+    fireEvent.click(signUpLink);
 
     const firstNameInput = screen.getByPlaceholderText(/first name/i);
     const lastNameInput = screen.getByPlaceholderText(/last name/i);
@@ -126,5 +153,41 @@ describe('Login Page', () => {
     expect(mockDispatch).toHaveBeenCalledWith(
       expect.objectContaining({ type: 'user/addUser' })
     );
+  });
+
+  it('should navigate to home page after successful login', () => {
+    const navigate = vi.fn();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (useNavigate as any).mockReturnValue(navigate);
+
+    render(
+      <MemoryRouter>
+        <Provider store={store}>
+          <LoginPage />
+        </Provider>
+      </MemoryRouter>
+    );
+
+    const signUpLink = screen.getByRole('button', { name: /sign up/i });
+
+    fireEvent.click(signUpLink);
+
+    const firstNameInput = screen.getByPlaceholderText(/first name/i);
+    const lastNameInput = screen.getByPlaceholderText(/last name/i);
+    const emailInput = screen.getByPlaceholderText(/email/i);
+    const passwordInput = screen.getByPlaceholderText(/^password$/i);
+    const confirmPasswordInput =
+      screen.getByPlaceholderText(/^confirm password$/i);
+
+    fireEvent.change(firstNameInput, { target: { value: 'John' } });
+    fireEvent.change(lastNameInput, { target: { value: 'Doe' } });
+    fireEvent.change(emailInput, { target: { value: 'john@gmail.com' } });
+    fireEvent.change(passwordInput, { target: { value: '123456' } });
+    fireEvent.change(confirmPasswordInput, { target: { value: '123456' } });
+
+    const signUpButton = screen.getByRole('button', { name: /sign up/i });
+    fireEvent.click(signUpButton);
+
+    expect(navigate).toHaveBeenCalledWith('/');
   });
 });
