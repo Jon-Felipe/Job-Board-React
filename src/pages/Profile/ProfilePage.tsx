@@ -1,3 +1,5 @@
+import { useAppSelector } from '../../hooks';
+
 // components
 import Button from '../../components/ui/Button/Button';
 import Input from '../../components/ui/Input/Input';
@@ -6,6 +8,8 @@ import Input from '../../components/ui/Input/Input';
 import styles from './ProfilePage.module.css';
 
 function ProfilePage() {
+  const user = useAppSelector((state) => state.user);
+
   return (
     <main className={styles.profilePage}>
       <h1 className={styles.title}>My Profile</h1>
@@ -20,14 +24,14 @@ function ProfilePage() {
                   type='text'
                   placeholder='First Name'
                   name='firstName'
-                  value=''
+                  value={user.firstName}
                   onChange={() => console.log('firstName')}
                 />
                 <Input
                   type='text'
                   placeholder='Last Name'
                   name='lastName'
-                  value=''
+                  value={user.lastName}
                   onChange={() => console.log('lastName')}
                 />
               </div>
@@ -35,7 +39,7 @@ function ProfilePage() {
                 type='email'
                 placeholder='Email'
                 name='email'
-                value=''
+                value={user.email}
                 onChange={() => console.log('email')}
               />
               <div className={styles.flex}>
