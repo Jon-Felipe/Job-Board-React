@@ -1,3 +1,19 @@
+export interface IAddress {
+  street: string;
+  city: string;
+  postalCode: string;
+  country: string;
+}
+
+export interface IUser {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  age?: string | number;
+  address?: IAddress;
+}
+
 export interface IJobCategory {
   id: number;
   title: string;
