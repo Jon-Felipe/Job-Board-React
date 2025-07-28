@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { useAppSelector } from '../../hooks';
 
 // components
@@ -6,9 +7,28 @@ import Input from '../../components/ui/Input/Input';
 
 // extras
 import styles from './ProfilePage.module.css';
+import type { IUser } from '../../utils/types';
 
 function ProfilePage() {
   const user = useAppSelector((state) => state.user);
+
+  const [userDetails, setUserDetails] = useState<IUser>({
+    firstName: user.firstName ?? '',
+    lastName: user.lastName ?? '',
+    email: user.email ?? '',
+    phone: user.phone ?? '',
+    age: user.age ?? '',
+    address: user.address ?? undefined,
+  });
+
+  function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setUserDetails((prevState) => {
+      return { ...prevState, [name]: value };
+    });
+  }
 
   return (
     <main className={styles.profilePage}>
@@ -24,38 +44,38 @@ function ProfilePage() {
                   type='text'
                   placeholder='First Name'
                   name='firstName'
-                  value={user.firstName}
-                  onChange={() => console.log('firstName')}
+                  value={userDetails.firstName}
+                  onChange={handleOnChange}
                 />
                 <Input
                   type='text'
                   placeholder='Last Name'
                   name='lastName'
-                  value={user.lastName}
-                  onChange={() => console.log('lastName')}
+                  value={userDetails.lastName}
+                  onChange={handleOnChange}
                 />
               </div>
               <Input
                 type='email'
                 placeholder='Email'
                 name='email'
-                value={user.email}
-                onChange={() => console.log('email')}
+                value={userDetails.email}
+                onChange={handleOnChange}
               />
               <div className={styles.flex}>
                 <Input
                   type='text'
                   placeholder='Phone'
                   name='phone'
-                  value=''
-                  onChange={() => console.log('phone')}
+                  value={userDetails.phone}
+                  onChange={handleOnChange}
                 />
                 <Input
                   type='number'
                   placeholder='Age'
                   name='age'
-                  value=''
-                  onChange={() => console.log('age')}
+                  value={userDetails.age}
+                  onChange={handleOnChange}
                 />
               </div>
             </section>
@@ -65,31 +85,31 @@ function ProfilePage() {
                 type='text'
                 placeholder='Street'
                 name='street'
-                value=''
-                onChange={() => console.log('street')}
+                value={userDetails.address?.street}
+                onChange={handleOnChange}
               />
               <div className={styles.flex}>
                 <Input
                   type='text'
                   placeholder='City'
                   name='city'
-                  value=''
-                  onChange={() => console.log('city')}
+                  value={userDetails.address?.city}
+                  onChange={handleOnChange}
                 />
                 <Input
                   type='text'
                   placeholder='Postal Code'
                   name='postalCode'
-                  value=''
-                  onChange={() => console.log('postalCode')}
+                  value={userDetails.address?.postalCode}
+                  onChange={handleOnChange}
                 />
               </div>
               <Input
                 type='text'
                 placeholder='Country'
                 name='country'
-                value=''
-                onChange={() => console.log('country')}
+                value={userDetails.address?.country}
+                onChange={handleOnChange}
               />
             </section>
           </div>
