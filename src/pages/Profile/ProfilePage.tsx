@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { updateUser } from '../../features/user/userSlice';
 
 // components
 import Button from '../../components/ui/Button/Button';
@@ -7,18 +8,24 @@ import Input from '../../components/ui/Input/Input';
 
 // extras
 import styles from './ProfilePage.module.css';
-import type { IUser } from '../../utils/types';
+import type { IAddress, IUser } from '../../utils/types';
 
 function ProfilePage() {
+  const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.user);
 
   const [userDetails, setUserDetails] = useState<IUser>({
-    firstName: user.firstName ?? '',
-    lastName: user.lastName ?? '',
-    email: user.email ?? '',
-    phone: user.phone ?? '',
-    age: user.age ?? '',
-    address: user.address ?? undefined,
+    firstName: user.firstName || '',
+    lastName: user.lastName || '',
+    email: user.email || '',
+    phone: user.phone || '',
+    age: user.age || '',
+    address: user.address || {
+      street: '',
+      city: '',
+      postalCode: '',
+      country: '',
+    },
   });
 
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -26,8 +33,30 @@ function ProfilePage() {
     const value = e.target.value;
 
     setUserDetails((prevState) => {
+      if (name.startsWith('address.')) {
+        const addressField = name.split('.')[1] as keyof IAddress;
+        return {
+          ...prevState,
+          address: {
+            ...(prevState.address ?? {
+              street: '',
+              city: '',
+              postalCode: '',
+              country: '',
+            }),
+            [addressField]: value,
+          },
+        };
+      }
+
       return { ...prevState, [name]: value };
     });
+  }
+
+  function handleOnSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    dispatch(updateUser(userDetails));
   }
 
   return (
@@ -35,7 +64,7 @@ function ProfilePage() {
       <h1 className={styles.title}>My Profile</h1>
       <section className={styles.detailsSection}>
         <h3 className={styles.detailsTitle}>Update Your Details</h3>
-        <form>
+        <form onSubmit={handleOnSubmit}>
           <div className={styles.userDetailsForm}>
             <section>
               <h4 className={styles.formTitle}>Personal Information</h4>
@@ -84,7 +113,7 @@ function ProfilePage() {
               <Input
                 type='text'
                 placeholder='Street'
-                name='street'
+                name='address.street'
                 value={userDetails.address?.street}
                 onChange={handleOnChange}
               />
@@ -92,14 +121,14 @@ function ProfilePage() {
                 <Input
                   type='text'
                   placeholder='City'
-                  name='city'
+                  name='address.city'
                   value={userDetails.address?.city}
                   onChange={handleOnChange}
                 />
                 <Input
                   type='text'
                   placeholder='Postal Code'
-                  name='postalCode'
+                  name='address.postalCode'
                   value={userDetails.address?.postalCode}
                   onChange={handleOnChange}
                 />
@@ -107,7 +136,7 @@ function ProfilePage() {
               <Input
                 type='text'
                 placeholder='Country'
-                name='country'
+                name='address.country'
                 value={userDetails.address?.country}
                 onChange={handleOnChange}
               />
