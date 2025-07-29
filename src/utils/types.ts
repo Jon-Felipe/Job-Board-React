@@ -14,6 +14,8 @@ export interface IUser {
   address?: IAddress;
 }
 
+export type BasicUserInfo = Pick<IUser, 'firstName' | 'lastName' | 'email'>;
+
 export interface IJobCategory {
   id: number;
   title: string;
