@@ -32,9 +32,6 @@ function Header({ title }: HeaderProps) {
           <Link to='/' className={styles.navLink}>
             Categories
           </Link>
-          <Link to='/' className={styles.navLink}>
-            Location
-          </Link>
         </nav>
         {user.firstName ? (
           <Link to='/profile' className={styles.profileLink}>
