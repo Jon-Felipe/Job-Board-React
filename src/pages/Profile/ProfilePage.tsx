@@ -60,8 +60,7 @@ function ProfilePage() {
   }
 
   return (
-    <main className={styles.profilePage}>
-      <h1 className={styles.title}>My Profile</h1>
+    <div>
       <section className={styles.detailsSection}>
         <h3 className={styles.detailsTitle}>Update Your Details</h3>
         <form onSubmit={handleOnSubmit}>
@@ -149,7 +148,7 @@ function ProfilePage() {
           </div>
         </form>
       </section>
-    </main>
+    </div>
   );
 }
 
