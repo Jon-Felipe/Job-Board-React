@@ -144,7 +144,7 @@ function ProfilePage() {
           </div>
           <div className={styles.submitButton}>
             <Button type='submit' variant='inverted'>
-              Submit
+              Save Changes
             </Button>
           </div>
         </form>
