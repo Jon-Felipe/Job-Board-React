@@ -8,7 +8,7 @@ export type Size = 'small' | 'medium' | 'large';
 
 export type ButtonProps = {
   type: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
-  children: React.ReactNode;
+  children?: React.ReactNode | string;
   size?: Size;
   variant?: Variant;
   disabled?: boolean;
