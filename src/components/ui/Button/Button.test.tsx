@@ -10,11 +10,13 @@ describe('Input Component', () => {
   const createButtonProps = (
     overrides: Partial<ButtonProps> = {}
   ): ButtonProps => ({
+    type: 'button',
     children: 'Click Me',
-    onClick: vi.fn(),
+    size: 'medium',
     variant: 'primary',
     disabled: false,
     isLoading: false,
+    onClick: vi.fn(),
     ...overrides,
   });
 
