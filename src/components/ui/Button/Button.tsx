@@ -1,40 +1,42 @@
 import React from 'react';
 
 // extras
-import styles from './Button.module.css';
+import { ButtonContainer } from './Button.styles';
 
-type Variant = 'primary' | 'secondary' | 'danger' | 'inverted' | 'text';
+export type Variant = 'primary' | 'outlined' | 'text';
+export type Size = 'small' | 'medium' | 'large';
 
 export type ButtonProps = {
+  type: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
   children: React.ReactNode;
-  type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
-  onClick?: () => void;
+  size?: Size;
   variant?: Variant;
   disabled?: boolean;
   isLoading?: boolean;
+  onClick?: () => void;
 };
 
 function Button({
-  children,
   type = 'button',
-  onClick,
+  children,
+  size = 'medium',
   variant = 'primary',
   disabled = false,
   isLoading = false,
+  onClick,
 }: ButtonProps) {
   const isDisabled = isLoading || disabled;
 
-  const cssClasses = [styles.button, styles[variant]].join(' ');
-
   return (
-    <button
+    <ButtonContainer
       type={type}
       onClick={onClick}
-      className={cssClasses}
       disabled={isDisabled}
+      $size={size}
+      $variant={variant}
     >
       {isLoading ? 'Loading...' : children}
-    </button>
+    </ButtonContainer>
   );
 }
 
