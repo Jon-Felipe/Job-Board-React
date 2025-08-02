@@ -5,8 +5,8 @@ import type { Size } from './Spinner';
 
 const sizeStyle: Record<Size, ReturnType<typeof css>> = {
   small: css`
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border-width: 2px;
   `,
   medium: css`
