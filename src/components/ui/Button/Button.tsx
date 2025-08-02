@@ -1,7 +1,10 @@
 import React from 'react';
 
+// components
+import Spinner from '../Spinner/Spinner';
+
 // extras
-import { ButtonContainer } from './Button.styles';
+import { ButtonContainer, LoadingButtonContainer } from './Button.styles';
 
 export type Variant = 'primary' | 'outlined' | 'text';
 export type Size = 'small' | 'medium' | 'large';
@@ -35,7 +38,14 @@ function Button({
       $size={size}
       $variant={variant}
     >
-      {isLoading ? 'Loading...' : children}
+      {isLoading ? (
+        <LoadingButtonContainer>
+          <Spinner size='small' />
+          <p>Loading...</p>
+        </LoadingButtonContainer>
+      ) : (
+        children
+      )}
     </ButtonContainer>
   );
 }

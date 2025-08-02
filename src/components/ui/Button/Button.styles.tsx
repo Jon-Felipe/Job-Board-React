@@ -69,3 +69,13 @@ export const ButtonContainer = styled.button<{
     cursor: not-allowed;
   }
 `;
+
+export const LoadingButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+
+  p {
+    margin: 0;
+  }
+`;
