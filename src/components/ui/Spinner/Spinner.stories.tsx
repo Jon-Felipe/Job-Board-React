@@ -29,11 +29,28 @@ const SpinnerContainer = styled.div`
 export const DefaultSpinner: Story = {};
 
 export const SizeSpinners: Story = {
+  args: {
+    variant: 'primary',
+  },
   render: (args) => (
     <SpinnerContainer>
       <Spinner {...args} size='small' />
       <Spinner {...args} size='medium' />
       <Spinner {...args} size='large' />
+    </SpinnerContainer>
+  ),
+};
+
+export const VariantSpinners: Story = {
+  args: {
+    size: 'medium',
+  },
+  render: (args) => (
+    <SpinnerContainer>
+      <Spinner {...args} variant='primary' />
+      <Spinner {...args} variant='secondary' />
+      <Spinner {...args} variant='success' />
+      <Spinner {...args} variant='danger' />
     </SpinnerContainer>
   ),
 };
