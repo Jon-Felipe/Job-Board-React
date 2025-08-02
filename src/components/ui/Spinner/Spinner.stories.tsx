@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import styled from 'styled-components';
 import Spinner from './Spinner';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -18,5 +19,21 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const SpinnerContainer = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+`;
+
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const DefaultSpinner: Story = {};
+
+export const SizeSpinners: Story = {
+  render: (args) => (
+    <SpinnerContainer>
+      <Spinner {...args} size='small' />
+      <Spinner {...args} size='medium' />
+      <Spinner {...args} size='large' />
+    </SpinnerContainer>
+  ),
+};

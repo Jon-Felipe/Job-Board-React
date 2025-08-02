@@ -1,8 +1,14 @@
 // extras
 import { SpinnerContainer } from './Spinner.styles';
 
-function Spinner() {
-  return <SpinnerContainer />;
+export type Size = 'small' | 'medium' | 'large';
+
+type SpinnerProps = {
+  size?: Size;
+};
+
+function Spinner({ size = 'medium' }: SpinnerProps) {
+  return <SpinnerContainer $size={size} />;
 }
 
 export default Spinner;
