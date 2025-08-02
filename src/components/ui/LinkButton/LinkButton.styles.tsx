@@ -27,10 +27,6 @@ const buttonVariants: Record<Variant, ReturnType<typeof css>> = {
   text: css`
     background-color: transparent;
     color: #202c39;
-
-    &:hover {
-      text-decoration: underline;
-    }
   `,
 };
 
