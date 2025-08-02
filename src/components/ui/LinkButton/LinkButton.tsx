@@ -1,24 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router';
 
 // extras
-import styles from './LinkButton.module.css';
+import { LinkButtonContainer } from './LinkButton.styles';
 
-type Variant = 'primary' | 'secondary' | 'text';
+export type Variant = 'primary' | 'secondary' | 'text';
 
 type LinkButtonProps = {
   path: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   variant?: Variant;
 };
 
 function LinkButton({ path, children, variant = 'primary' }: LinkButtonProps) {
-  const cssClasses = [styles.link, styles[variant]].join(' ');
-
   return (
-    <Link to={path} className={cssClasses}>
+    <LinkButtonContainer to={path} $variant={variant}>
       {children}
-    </Link>
+    </LinkButtonContainer>
   );
 }
 
