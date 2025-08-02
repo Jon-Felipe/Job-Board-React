@@ -13,7 +13,26 @@ const meta = {
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
-  argTypes: {},
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['small', 'medium', 'large'],
+      description: 'Sets the size of the spinner',
+      table: {
+        type: { summary: 'small | medium | large' },
+        defaultValue: { summary: 'medium' },
+      },
+    },
+    variant: {
+      control: 'select',
+      options: ['primary', 'secondary', 'success', 'danger'],
+      description: 'Sets the colour style of the spinner',
+      table: {
+        type: { summary: 'primary | secondary | success | danger' },
+        defaultValue: { summary: 'primary' },
+      },
+    },
+  },
 } satisfies Meta<typeof Spinner>;
 
 export default meta;
