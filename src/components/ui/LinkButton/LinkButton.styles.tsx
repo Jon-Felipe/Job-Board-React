@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import styled, { css } from 'styled-components';
 
 // extras
-import type { Variant } from './LinkButton';
+import type { Size, Variant } from './LinkButton';
 
 const buttonVariants: Record<Variant, ReturnType<typeof css>> = {
   primary: css`
@@ -30,11 +30,27 @@ const buttonVariants: Record<Variant, ReturnType<typeof css>> = {
   `,
 };
 
-export const LinkButtonContainer = styled(Link)<{ $variant: Variant }>`
+const sizeVariants: Record<Size, ReturnType<typeof css>> = {
+  small: css`
+    font-size: 14px;
+    padding: 8px 12px;
+  `,
+  medium: css`
+    font-size: 16px;
+    padding: 10px 14px;
+  `,
+  large: css`
+    font-size: 18px;
+    padding: 12px 16px;
+  `,
+};
+
+export const LinkButtonContainer = styled(Link)<{
+  $variant: Variant;
+  $size: Size;
+}>`
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16px;
   font-weight: 600;
-  padding: 10px 15px;
   border-radius: 10px;
   text-decoration: none;
   cursor: pointer;
@@ -42,4 +58,5 @@ export const LinkButtonContainer = styled(Link)<{ $variant: Variant }>`
   transition: background-color 0.3s ease-in;
 
   ${(props) => buttonVariants[props.$variant]}
+  ${(props) => sizeVariants[props.$size]}
 `;

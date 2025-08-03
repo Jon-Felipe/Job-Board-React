@@ -18,10 +18,19 @@ const meta = {
     variant: {
       control: 'select',
       options: ['primary', 'secondary', 'text'],
-      description: 'Visual style of the button',
+      description: 'Visual style of the link button',
       table: {
         type: { summary: 'primary | secondary | text' },
         defaultValue: { summary: 'primary' },
+      },
+    },
+    size: {
+      control: 'inline-radio',
+      options: ['small', 'medium', 'large'],
+      description: 'Sets the size of the link button',
+      table: {
+        type: { summary: 'small | medium | large' },
+        defaultValue: { summary: 'medium' },
       },
     },
     path: {
@@ -81,6 +90,25 @@ export const VariantLinkButtons: Story = {
         Read More
       </LinkButton>
       <LinkButton {...args} variant='text'>
+        Read More
+      </LinkButton>
+    </LinkButtonContainer>
+  ),
+};
+
+export const SizeLinkButtons: Story = {
+  args: {
+    path: '/',
+  },
+  render: (args) => (
+    <LinkButtonContainer>
+      <LinkButton {...args} size='small' variant='text'>
+        Read More
+      </LinkButton>
+      <LinkButton {...args} size='medium' variant='primary'>
+        Read More
+      </LinkButton>
+      <LinkButton {...args} size='large' variant='secondary'>
         Read More
       </LinkButton>
     </LinkButtonContainer>

@@ -4,16 +4,23 @@ import React from 'react';
 import { LinkButtonContainer } from './LinkButton.styles';
 
 export type Variant = 'primary' | 'secondary' | 'text';
+export type Size = 'small' | 'medium' | 'large';
 
 type LinkButtonProps = {
   path: string;
   children?: React.ReactNode;
   variant?: Variant;
+  size?: Size;
 };
 
-function LinkButton({ path, children, variant = 'primary' }: LinkButtonProps) {
+function LinkButton({
+  path,
+  children,
+  variant = 'primary',
+  size = 'medium',
+}: LinkButtonProps) {
   return (
-    <LinkButtonContainer to={path} $variant={variant}>
+    <LinkButtonContainer to={path} $variant={variant} $size={size}>
       {children}
     </LinkButtonContainer>
   );
