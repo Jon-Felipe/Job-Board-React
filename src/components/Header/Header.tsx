@@ -1,12 +1,12 @@
-import { Link } from 'react-router';
 import { FaBars, FaRegUserCircle } from 'react-icons/fa';
 
 // components
 import LinkButton from '../ui/LinkButton/LinkButton';
 
 // extras
-import styles from './Header.module.css';
+import { HeaderContainer, NavLinksContainer } from './Header.styles';
 import { useAppSelector } from '../../hooks';
+import { Link } from 'react-router';
 
 type HeaderProps = {
   title: string;
@@ -16,25 +16,25 @@ function Header({ title }: HeaderProps) {
   const user = useAppSelector((state) => state.user);
 
   return (
-    <header className={styles.header}>
-      <Link to='/'>
-        <h1 className={styles.title}>{title}</h1>
-      </Link>
+    <HeaderContainer>
+      <LinkButton path='/' variant='text' size='medium'>
+        <h1 className='header-title'>{title}</h1>
+      </LinkButton>
 
-      <div className={styles.actionsContainer}>
-        <nav className={styles.navLinks}>
-          <Link to='/' className={styles.navLink}>
+      <NavLinksContainer>
+        <div className='links-tablet'>
+          <LinkButton path='/' variant='text'>
             Home
-          </Link>
-          <Link to='/jobs' className={styles.navLink}>
+          </LinkButton>
+          <LinkButton path='/jobs' variant='text'>
             Jobs
-          </Link>
-          <Link to='/' className={styles.navLink}>
+          </LinkButton>
+          <LinkButton path='/' variant='text'>
             Categories
-          </Link>
-        </nav>
+          </LinkButton>
+        </div>
         {user.firstName ? (
-          <Link to='/profile' className={styles.profileLink}>
+          <Link to='/profile' className='profile-buttonLink'>
             <FaRegUserCircle />
           </Link>
         ) : (
@@ -42,9 +42,11 @@ function Header({ title }: HeaderProps) {
             Login / Sign Up
           </LinkButton>
         )}
-        <FaBars className={styles.menuIcon} />
-      </div>
-    </header>
+        <div className='menu-toggle'>
+          <FaBars />
+        </div>
+      </NavLinksContainer>
+    </HeaderContainer>
   );
 }
 
