@@ -1,6 +1,8 @@
 import React from 'react';
-import styles from './Search.module.css';
 import { FaSearch } from 'react-icons/fa';
+
+// extras
+import { FormContainer } from './Search.styles';
 
 export type SearchProp = {
   name: string;
@@ -18,7 +20,7 @@ function Search({
   required = false,
 }: SearchProp) {
   return (
-    <div className={styles.searchContainer}>
+    <FormContainer>
       <FaSearch />
       <input
         type='search'
@@ -29,9 +31,8 @@ function Search({
         placeholder={placeholder}
         onChange={onChange}
         required={required}
-        className={styles.search}
       />
-    </div>
+    </FormContainer>
   );
 }
 
