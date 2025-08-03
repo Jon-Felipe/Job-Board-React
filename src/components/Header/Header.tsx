@@ -38,7 +38,9 @@ function Header({ title }: HeaderProps) {
             <FaRegUserCircle />
           </Link>
         ) : (
-          <LinkButton path='/login'>Login / Sign Up</LinkButton>
+          <LinkButton path='/login' variant='primary' size='small'>
+            Login / Sign Up
+          </LinkButton>
         )}
         <FaBars className={styles.menuIcon} />
       </div>
