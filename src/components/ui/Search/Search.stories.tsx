@@ -14,6 +14,14 @@ const meta = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
+    label: {
+      control: 'text',
+      description: 'Optional label text for the search input',
+      table: {
+        type: { summary: 'string' },
+        category: 'Props',
+      },
+    },
     name: {
       control: 'text',
       description: 'The name attribute for the search input',
@@ -68,6 +76,16 @@ export const DefaultSearch: Story = {
     placeholder: 'First Name',
     value: 'John',
     onChange: () => {},
+  },
+};
+
+export const LabelSearch: Story = {
+  args: {
+    name: 'firstName',
+    placeholder: 'First Name',
+    value: '',
+    onChange: () => {},
+    label: 'First Name',
   },
 };
 

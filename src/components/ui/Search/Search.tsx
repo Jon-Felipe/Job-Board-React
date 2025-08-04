@@ -2,13 +2,14 @@ import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 // extras
-import { FormContainer } from './Search.styles';
+import { FormContainer, InputContainer } from './Search.styles';
 
 export type SearchProps = {
   name: string;
   value: string;
   placeholder: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  label?: string;
   required?: boolean;
 };
 
@@ -17,21 +18,25 @@ function Search({
   placeholder,
   value,
   onChange,
+  label,
   required = false,
 }: SearchProps) {
   return (
     <FormContainer>
-      <FaSearch />
-      <input
-        type='search'
-        id={name}
-        data-testid='search-input'
-        name={name}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        required={required}
-      />
+      {label && <label className='label'>{label}</label>}
+      <InputContainer>
+        <FaSearch />
+        <input
+          type='search'
+          id={name}
+          data-testid='search-input'
+          name={name}
+          value={value}
+          placeholder={placeholder}
+          onChange={onChange}
+          required={required}
+        />
+      </InputContainer>
     </FormContainer>
   );
 }
