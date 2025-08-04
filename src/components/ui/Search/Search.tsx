@@ -4,7 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 // extras
 import { FormContainer } from './Search.styles';
 
-export type SearchProp = {
+export type SearchProps = {
   name: string;
   value: string;
   placeholder: string;
@@ -18,7 +18,7 @@ function Search({
   value,
   onChange,
   required = false,
-}: SearchProp) {
+}: SearchProps) {
   return (
     <FormContainer>
       <FaSearch />
