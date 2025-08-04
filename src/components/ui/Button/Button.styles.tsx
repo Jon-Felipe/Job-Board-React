@@ -57,6 +57,7 @@ export const ButtonContainer = styled.button<{
   display: inline-block;
   border-radius: 8px;
   font-weight: 600;
+  width: 100%;
   cursor: pointer;
 
   transition: all 0.2s ease-in-out;
