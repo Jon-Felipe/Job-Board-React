@@ -125,13 +125,17 @@ function LoginPage() {
             onChange={handleOnChange}
           />
         )}
-        <Button type='submit' variant='inverted'>
+        <Button type='submit' variant='primary'>
           Sign {isSignUp ? 'Up' : 'In'}
         </Button>
       </form>
       <div className={styles.signUp}>
         <p>{isSignUp ? 'Already' : "Don't"} have an account?</p>
-        <Button variant='text' onClick={() => setIsSignUp(!isSignUp)}>
+        <Button
+          type='button'
+          variant='text'
+          onClick={() => setIsSignUp(!isSignUp)}
+        >
           Sign {isSignUp ? 'In' : 'Up'}
         </Button>
       </div>
