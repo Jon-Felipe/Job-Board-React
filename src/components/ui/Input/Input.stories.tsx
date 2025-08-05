@@ -28,3 +28,14 @@ export const DefaultInput: Story = {
     onChange: () => {},
   },
 };
+
+export const LabeledInput: Story = {
+  args: {
+    type: 'text',
+    label: 'First Name',
+    placeholder: 'First Name',
+    name: 'firstName',
+    value: '',
+    onChange: () => {},
+  },
+};
