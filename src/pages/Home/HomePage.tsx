@@ -1,11 +1,13 @@
+import { FaRegBell, FaRegClock, FaRegFileAlt } from 'react-icons/fa';
+
 // components
 import Search from '../../components/ui/Search/Search';
 import Button from '../../components/ui/Button/Button';
-import About from '../../components/About/About';
+import FeatureCard from '../../components/ui/FeatureCard/FeatureCard';
 import Job from '../../components/Job/Job';
 
 // extras
-import { HeroContainer } from './HomePage.styles';
+import { AboutContainer, HeroContainer } from './HomePage.styles';
 
 function HomePage() {
   return (
@@ -49,7 +51,27 @@ function HomePage() {
           </ul>
         </div>
       </HeroContainer>
-      <About />
+      <AboutContainer>
+        <h4 className='text'>We work to do the best</h4>
+        <h1 className='title'>The Only Job Seeker Centric Platform</h1>
+        <div className='features'>
+          <FeatureCard
+            icon={<FaRegFileAlt />}
+            title='Create your resume'
+            text='Lorem ipsum dolor sit amet consectetur adipisicing elit. Non corrupti ipsam, quae dolorem nobis excepturi laboriosam consequuntur consectetur velit numquam!'
+          />
+          <FeatureCard
+            icon={<FaRegClock />}
+            title='Get matched in minutes'
+            text='Lorem ipsum dolor sit amet consectetur adipisicing elit. Non corrupti ipsam, quae dolorem nobis excepturi laboriosam consequuntur consectetur velit numquam!'
+          />
+          <FeatureCard
+            icon={<FaRegBell />}
+            title='Never miss an opportunity'
+            text='Lorem ipsum dolor sit amet consectetur adipisicing elit. Non corrupti ipsam, quae dolorem nobis excepturi laboriosam consequuntur consectetur velit numquam!'
+          />
+        </div>
+      </AboutContainer>
       <Job />
     </main>
   );
