@@ -7,8 +7,13 @@ import Button from '../../components/ui/Button/Button';
 import Input from '../../components/ui/Input/Input';
 
 // extras
-import styles from './LoginPage.module.css';
 import { addUser } from '../../features/user/userSlice';
+import {
+  FlexContainer,
+  FormActions,
+  FormContainer,
+  LoginPageContainer,
+} from './LoginPage.styles';
 
 interface ISignUpDetails {
   firstName: string;
@@ -81,13 +86,14 @@ function LoginPage() {
   }
 
   return (
-    <main className={styles.login}>
-      <h3 className={styles.title}>Job Board</h3>
-      <form className={styles.form} onSubmit={handleSubmit}>
+    <LoginPageContainer>
+      <h3 className='title'>Job Board</h3>
+      <FormContainer onSubmit={handleSubmit}>
         {isSignUp && (
-          <>
+          <FlexContainer>
             <Input
               type='text'
+              label='First Name'
               name='firstName'
               value={signUpDetails.firstName}
               placeholder='First Name'
@@ -95,15 +101,17 @@ function LoginPage() {
             />
             <Input
               type='text'
+              label='Last Name'
               name='lastName'
               value={signUpDetails.lastName}
               placeholder='Last Name'
               onChange={handleOnChange}
             />
-          </>
+          </FlexContainer>
         )}
         <Input
           type='email'
+          label='Email'
           name='email'
           value={signUpDetails.email}
           placeholder='Email'
@@ -111,6 +119,7 @@ function LoginPage() {
         />
         <Input
           type='password'
+          label='Password'
           name='password'
           value={signUpDetails.password}
           placeholder='Password'
@@ -119,27 +128,30 @@ function LoginPage() {
         {isSignUp && (
           <Input
             type='password'
+            label='Confirm Password'
             name='confirmPassword'
             value={signUpDetails.confirmPassword}
             placeholder='Confirm Password'
             onChange={handleOnChange}
           />
         )}
-        <Button type='submit' variant='primary'>
+        <Button type='submit' variant='primary' size='large'>
           Sign {isSignUp ? 'Up' : 'In'}
         </Button>
-      </form>
-      <div className={styles.signUp}>
+      </FormContainer>
+      <FormActions className='form-actions'>
         <p>{isSignUp ? 'Already' : "Don't"} have an account?</p>
-        <Button
-          type='button'
-          variant='text'
-          onClick={() => setIsSignUp(!isSignUp)}
-        >
-          Sign {isSignUp ? 'In' : 'Up'}
-        </Button>
-      </div>
-    </main>
+        <div className='button'>
+          <Button
+            type='button'
+            variant='text'
+            onClick={() => setIsSignUp(!isSignUp)}
+          >
+            Sign {isSignUp ? 'In' : 'Up'}
+          </Button>
+        </div>
+      </FormActions>
+    </LoginPageContainer>
   );
 }
 
