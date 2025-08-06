@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const InputContainer = styled.div`
+  display: block;
+  width: 100%;
+
   .label {
     display: block;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
