@@ -1,15 +1,32 @@
-import { FaRegBell, FaRegClock, FaRegFileAlt } from 'react-icons/fa';
+import { useState } from 'react';
+import {
+  FaRegBell,
+  FaRegClock,
+  FaRegFileAlt,
+  FaTh,
+  FaBars,
+} from 'react-icons/fa';
 
 // components
 import Search from '../../components/ui/Search/Search';
 import Button from '../../components/ui/Button/Button';
 import FeatureCard from '../../components/ui/FeatureCard/FeatureCard';
-import Job from '../../components/Job/Job';
+import JobCategoryLink from '../../components/Job/JobCategoryLink';
+import LinkButton from '../../components/ui/LinkButton/LinkButton';
+import JobCard from '../../components/Job/JobCard';
+import JobTile from '../../components/Job/JobTile';
 
 // extras
-import { AboutContainer, HeroContainer } from './HomePage.styles';
+import {
+  AboutContainer,
+  FeatureJobsContainer,
+  HeroContainer,
+} from './HomePage.styles';
+import { jobCategories, jobs } from '../../utils/constants';
 
 function HomePage() {
+  const [isCardView, setIsCardView] = useState<boolean>(true);
+
   return (
     <main>
       <HeroContainer>
@@ -72,7 +89,42 @@ function HomePage() {
           />
         </div>
       </AboutContainer>
-      <Job />
+      <FeatureJobsContainer>
+        <h1 className='title'>Find your favourite job</h1>
+        <div className='job-categories'>
+          {jobCategories.map((jobCategory) => (
+            <JobCategoryLink key={jobCategory.id} title={jobCategory.title} />
+          ))}
+        </div>
+        <div className='job-listActions'>
+          <LinkButton variant='text' path='jobs'>
+            View All Jobs
+          </LinkButton>
+          <div className='job-layoutButtons'>
+            <button
+              onClick={() => setIsCardView(false)}
+              className={!isCardView ? 'isActive' : ''}
+            >
+              <FaBars />
+            </button>
+            <button
+              onClick={() => setIsCardView(true)}
+              className={isCardView ? 'isActive' : ''}
+            >
+              <FaTh />
+            </button>
+          </div>
+        </div>
+        <div className={isCardView ? 'job-cards' : 'job-tiles'}>
+          {jobs.map((job) =>
+            isCardView ? (
+              <JobCard key={job.id} job={job} />
+            ) : (
+              <JobTile key={job.id} job={job} />
+            )
+          )}
+        </div>
+      </FeatureJobsContainer>
     </main>
   );
 }
