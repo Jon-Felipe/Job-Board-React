@@ -11,7 +11,6 @@ import {
 import Search from '../../components/ui/Search/Search';
 import Button from '../../components/ui/Button/Button';
 import FeatureCard from '../../components/ui/FeatureCard/FeatureCard';
-import JobCategoryLink from '../../components/Job/JobCategoryLink';
 import LinkButton from '../../components/ui/LinkButton/LinkButton';
 import JobCard from '../../components/Job/JobCard';
 import JobTile from '../../components/Job/JobTile';
@@ -93,7 +92,9 @@ function HomePage() {
         <h1 className='title'>Find your favourite job</h1>
         <div className='job-categories'>
           {jobCategories.map((jobCategory) => (
-            <JobCategoryLink key={jobCategory.id} title={jobCategory.title} />
+            <article key={jobCategory.id} className='job-categoryLink'>
+              <h4>{jobCategory.title}</h4>
+            </article>
           ))}
         </div>
         <div className='job-listActions'>

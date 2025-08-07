@@ -154,6 +154,27 @@ export const FeatureJobsContainer = styled.section`
     }
   }
 
+  .job-categoryLink {
+    background-color: #fff;
+    color: #1d2445;
+    border: 1px solid rgba(29, 36, 69, 0.1);
+    border-radius: 6px;
+    padding: 10px 18px;
+    text-align: center;
+
+    h4 {
+      margin-bottom: 0;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    @media screen and (min-width: 1024px) {
+      h4 {
+        font-size: 16px;
+      }
+    }
+  }
+
   .job-listActions {
     display: flex;
     align-items: center;
