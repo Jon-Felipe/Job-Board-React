@@ -49,8 +49,10 @@ export const LinkButtonContainer = styled(Link)<{
   $variant: Variant;
   $size: Size;
 }>`
+  display: block;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
+  text-align: center;
   border-radius: 10px;
   text-decoration: none;
   cursor: pointer;
