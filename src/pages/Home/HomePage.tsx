@@ -12,7 +12,7 @@ import Search from '../../components/ui/Search/Search';
 import Button from '../../components/ui/Button/Button';
 import FeatureCard from '../../components/ui/FeatureCard/FeatureCard';
 import LinkButton from '../../components/ui/LinkButton/LinkButton';
-import JobCard from '../../components/Job/JobCard';
+import JobCard from '../../components/JobCard/JobCard';
 import JobTile from '../../components/Job/JobTile';
 
 // extras

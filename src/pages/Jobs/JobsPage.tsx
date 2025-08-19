@@ -1,7 +1,7 @@
 // components
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Button from '../../components/ui/Button/Button';
-import JobCard from '../../components/Job/JobCard';
+import JobCard from '../../components/JobCard/JobCard';
 
 // extras
 import styles from './JobsPage.module.css';
