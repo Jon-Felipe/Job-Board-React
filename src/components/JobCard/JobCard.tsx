@@ -13,13 +13,13 @@ type JobCardProps = {
 function JobCard({ job }: JobCardProps) {
   return (
     <JobCardContainer>
-      <div className='tabs'>
+      <div className='jobCard-tabs'>
         <Tab>{job.employmentType}</Tab>
         <Tab>{job.location}</Tab>
       </div>
-      <h5 className='company'>{job.company}</h5>
-      <h3 className='title'>{job.title}</h3>
-      <div className='details'>
+      <h5 className='jobCard-company'>{job.company}</h5>
+      <h3 className='jobCard-title'>{job.title}</h3>
+      <div className='jobCard-details'>
         <p>{job.industry}</p>
         <span>|</span>
         <p>

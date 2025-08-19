@@ -6,27 +6,27 @@ export const JobCardContainer = styled.article`
   border-radius: 10px;
   padding: 20px;
 
-  .tabs {
+  .jobCard-tabs {
     display: flex;
     align-items: center;
     column-gap: 10px;
     margin-bottom: 15px;
   }
 
-  .company {
+  .jobCard-company {
     margin-bottom: 0;
     color: #1d2445;
     font-size: 14px;
   }
 
-  .title {
+  .jobCard-title {
     text-align: start;
     color: #1d2445;
     text-transform: capitalize;
     font-size: 20px;
   }
 
-  .details {
+  .jobCard-details {
     display: flex;
     align-items: flex-start;
     column-gap: 5px;
