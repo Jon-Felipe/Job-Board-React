@@ -1,5 +1,7 @@
 import React from 'react';
-import styles from './Tab.module.css';
+
+// extras
+import { TabContainer } from './Tab.styles';
 
 type TabProps = {
   children: React.ReactNode;
@@ -7,9 +9,9 @@ type TabProps = {
 
 function Tab({ children }: TabProps) {
   return (
-    <div className={styles.tab}>
-      <p className={styles.text}>{children}</p>
-    </div>
+    <TabContainer>
+      <p className='tab-text'>{children}</p>
+    </TabContainer>
   );
 }
 

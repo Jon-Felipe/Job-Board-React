@@ -1,0 +1,15 @@
+import styled from 'styled-components';
+
+export const TabContainer = styled.div`
+  background-color: #fff;
+  padding: 4px 8px;
+  border: 1px solid rgba(29, 36, 69, 0.1);
+  border-radius: 5px;
+
+  .tab-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(29, 36, 69, 0.75);
+    margin-bottom: 0;
+  }
+`;
