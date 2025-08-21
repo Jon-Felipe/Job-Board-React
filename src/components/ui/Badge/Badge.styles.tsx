@@ -21,11 +21,20 @@ const badgeSizes: Record<BadgeSize, ReturnType<typeof css>> = {
   `,
 };
 
-export const BadgeContainer = styled.div<{ $size: BadgeSize }>`
+export const BadgeContainer = styled.div<{
+  $size: BadgeSize;
+  $rounded: boolean;
+}>`
   background-color: #fff;
   color: #1f2937;
   border: 1px solid #a3a3a3;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   ${(props) => props.$size && badgeSizes[props.$size]}
+
+  ${(props) =>
+    props.$rounded &&
+    css`
+      border-radius: 9999px;
+    `}
 `;
