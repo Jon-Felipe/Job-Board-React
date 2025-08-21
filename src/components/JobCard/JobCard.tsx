@@ -1,10 +1,10 @@
 // components
-import Tab from '../ui/Tab/Tab';
+import LinkButton from '../ui/LinkButton/LinkButton';
+import Badge from '../ui/Badge/Badge';
 
 // extras
 import { JobCardContainer } from './JobCard.styles';
 import type { IJob } from '../../utils/types';
-import LinkButton from '../ui/LinkButton/LinkButton';
 
 type JobCardProps = {
   job: IJob;
@@ -14,8 +14,8 @@ function JobCard({ job }: JobCardProps) {
   return (
     <JobCardContainer>
       <div className='jobCard-tabs'>
-        <Tab>{job.employmentType}</Tab>
-        <Tab>{job.location}</Tab>
+        <Badge>{job.employmentType}</Badge>
+        <Badge>{job.location}</Badge>
       </div>
       <h5 className='jobCard-company'>{job.company}</h5>
       <h3 className='jobCard-title'>{job.title}</h3>
