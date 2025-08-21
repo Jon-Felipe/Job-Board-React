@@ -1,11 +1,14 @@
 import React from 'react';
 
+// extras
+import { BadgeContainer } from './Badge.styles';
+
 export type BadgeProps = {
-  children: React.ReactNode;
+  children: React.ReactNode | string;
 };
 
 function Badge({ children }: BadgeProps) {
-  return <span>{children}</span>;
+  return <BadgeContainer>{children}</BadgeContainer>;
 }
 
 export default Badge;
