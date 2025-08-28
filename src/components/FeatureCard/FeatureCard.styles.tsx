@@ -7,7 +7,6 @@ export const FeatureCardContainer = styled.article`
   .featureCard-header {
     display: flex;
     align-items: center;
-    column-gap: 10px;
     margin-bottom: 30px;
     border-bottom: 1px solid rgba(29, 36, 69, 0.15);
 
@@ -17,9 +16,13 @@ export const FeatureCardContainer = styled.article`
       margin: 0;
     }
 
-    .featureCard-icon svg {
-      width: 30px;
-      height: 30px;
+    .featureCard-icon {
+      margin-right: 10px;
+
+      svg {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 
