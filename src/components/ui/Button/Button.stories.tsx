@@ -62,12 +62,14 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   column-gap: 10px;
+  min-width: 420px;
 `;
 
 const ChildrenContainer = styled.div`
   display: flex;
   align-items: center;
-  column-gap: 5px;
+  justify-content: center;
+  column-gap: 10px;
 
   p {
     margin: 0;
