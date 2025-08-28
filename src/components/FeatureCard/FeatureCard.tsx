@@ -4,7 +4,7 @@ import React from 'react';
 import { FeatureCardContainer } from './FeatureCard.styles';
 
 type FeatureCardProps = {
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   title: string;
   text: string;
 };
