@@ -50,3 +50,10 @@ export const DefaultFeatureCard: Story = {
     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Non corrupti ipsam, quae dolorem nobis excepturi laboriosam consequuntur consectetur velit numquam!',
   },
 };
+
+export const FeatureCardWithoutIcon: Story = {
+  args: {
+    title: 'Never miss an opportunity',
+    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Non corrupti ipsam, quae dolorem nobis excepturi laboriosam consequuntur consectetur velit numquam!',
+  },
+};
