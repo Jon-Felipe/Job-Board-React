@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const FeatureCardContainer = styled.article`
   max-width: 400px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   .featureCard-header {
     display: flex;
@@ -13,7 +14,7 @@ export const FeatureCardContainer = styled.article`
     h3 {
       font-size: 18px;
       font-weight: 600;
-      margin-bottom: 0;
+      margin: 0;
     }
 
     .featureCard-icon svg {
