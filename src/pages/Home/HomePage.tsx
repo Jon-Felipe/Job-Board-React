@@ -6,6 +6,7 @@ import {
   FaTh,
   FaBars,
 } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 // components
 import Search from '../../components/ui/Search/Search';
@@ -56,13 +57,13 @@ function HomePage() {
           <h4 className='category-title'>Popular Categories:</h4>
           <ul className='category-list'>
             <li>
-              <a href='#'>Marketing</a>
+              <Link to='/'>Home</Link>
             </li>
             <li>
-              <a href='#'>Design</a>
+              <Link to='/'>Design</Link>
             </li>
             <li>
-              <a href='#'>Development</a>
+              <Link to='/'>Development</Link>
             </li>
           </ul>
         </div>
