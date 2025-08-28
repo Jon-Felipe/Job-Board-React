@@ -4,39 +4,43 @@ import Button from '../../components/ui/Button/Button';
 import JobCard from '../../components/JobCard/JobCard';
 
 // extras
-import styles from './JobsPage.module.css';
+import { JobsPageContainer } from './JobPage.styles';
 import { jobs, jobTypes, experienceLevel } from '../../utils/constants';
 
 function JobsPage() {
   return (
-    <main>
-      <section className={styles.header}>
-        <h3 className={styles.title}>Find Your Favourite Job</h3>
-        <p className={styles.text}>
+    <JobsPageContainer>
+      <section className='header'>
+        <h3 className='header-title'>Find Your Favourite Job</h3>
+        <p className='header-text'>
           Find jobs, create trackable resumes and enrich your applications
         </p>
       </section>
-      <div className={styles.jobsContainer}>
-        <section className={styles.filters}>
+      <div className='jobsContainer'>
+        <section className='jobsContainer-filters'>
           <h4>Filters</h4>
-          <div className={styles.filterOptions}>
+          <div className='jobsContainer-filterOptions'>
             <Dropdown title='Job Types' dropdownOptions={jobTypes} />
             <Dropdown
               title='Experience Level'
               dropdownOptions={experienceLevel}
             />
           </div>
-          <Button variant='danger' onClick={() => console.log('clear')}>
+          <Button
+            type='button'
+            variant='outlined'
+            onClick={() => console.log('clear')}
+          >
             Clear Filters
           </Button>
         </section>
-        <section className={styles.jobs}>
+        <section className='jobs'>
           {jobs.map((job) => (
             <JobCard key={job.id} job={job} />
           ))}
         </section>
       </div>
-    </main>
+    </JobsPageContainer>
   );
 }
 
