@@ -13,7 +13,7 @@ function FeatureCard({ icon, title, text }: FeatureCardProps) {
   return (
     <FeatureCardContainer className='featureCard'>
       <div className='featureCard-header'>
-        <span className='featureCard-icon'>{icon}</span>
+        {icon && <span className='featureCard-icon'>{icon}</span>}
         <h3>{title}</h3>
       </div>
       <p className='featureCard-text'>{text}</p>
