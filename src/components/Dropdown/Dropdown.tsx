@@ -29,9 +29,10 @@ function Dropdown({ title, dropdownOptions }: DropdownProps) {
       {isDropdownOpen && (
         <div className='options'>
           {dropdownOptions.map((option) => (
-            <button key={option.id} className='option'>
-              {option.text}
-            </button>
+            <div key={option.id} className='optionContainer'>
+              <input type='checkbox' id={option.text} />
+              <label htmlFor={option.text}>{option.text}</label>
+            </div>
           ))}
         </div>
       )}

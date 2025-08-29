@@ -26,19 +26,14 @@ export const DropdownContainer = styled.div`
   .options {
     padding: 15px;
 
-    .option {
-      display: block;
-      background-color: transparent;
-      border: none;
+    .optionContainer {
+      display: flex;
+      align-items: center;
+      column-gap: 5px;
       font-size: 14px;
       text-transform: capitalize;
       color: #a0a2b3;
       margin-bottom: 15px;
-      cursor: pointer;
-    }
-
-    .option:hover {
-      text-decoration: underline;
     }
   }
 `;
