@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { FaCaretRight, FaCaretDown } from 'react-icons/fa';
 
 // extras
-import styles from './Dropdown.module.css';
 import type { IDropdownOption } from '../../utils/types';
+import { DropdownContainer } from './Dropdown.styles';
 
 type DropdownProps = {
   title: string;
@@ -14,28 +14,28 @@ function Dropdown({ title, dropdownOptions }: DropdownProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(true);
 
   return (
-    <div>
+    <DropdownContainer>
       <div
-        className={styles.toggle}
+        className='toggle'
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
       >
-        <h3 className={styles.toggleTitle}>{title}</h3>
+        <h3 className='title'>{title}</h3>
         {isDropdownOpen ? (
-          <FaCaretDown className={styles.toggleIcon} />
+          <FaCaretDown className='icon' />
         ) : (
-          <FaCaretRight className={styles.toggleIcon} />
+          <FaCaretRight className='icon' />
         )}
       </div>
       {isDropdownOpen && (
-        <div className={styles.dropdownOptions}>
+        <div className='options'>
           {dropdownOptions.map((option) => (
-            <button key={option.id} className={styles.option}>
+            <button key={option.id} className='option'>
               {option.text}
             </button>
           ))}
         </div>
       )}
-    </div>
+    </DropdownContainer>
   );
 }
 
