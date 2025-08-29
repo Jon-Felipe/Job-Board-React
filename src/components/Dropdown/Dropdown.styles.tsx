@@ -27,13 +27,15 @@ export const DropdownContainer = styled.div`
     padding: 15px;
 
     .optionContainer {
-      display: flex;
-      align-items: center;
-      column-gap: 5px;
+      display: block;
       font-size: 14px;
       text-transform: capitalize;
       color: #a0a2b3;
       margin-bottom: 15px;
+
+      input {
+        margin-right: 5px;
+      }
     }
   }
 `;
