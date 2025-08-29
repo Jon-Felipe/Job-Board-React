@@ -4,7 +4,7 @@ import Button from '../../components/ui/Button/Button';
 import JobCard from '../../components/JobCard/JobCard';
 
 // extras
-import { JobsPageContainer } from './JobPage.styles';
+import { JobsPageContainer } from './JobsPage.styles';
 import { jobs, jobTypes, experienceLevel } from '../../utils/constants';
 
 function JobsPage() {
