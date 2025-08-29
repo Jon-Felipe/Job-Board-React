@@ -4,9 +4,9 @@ import { useParams } from 'react-router';
 import Input from '../../components/ui/Input/Input';
 
 // extras
-import styles from './JobPage.module.css';
 import { jobs } from '../../utils/constants';
 import Button from '../../components/ui/Button/Button';
+import { JobPageContainer } from './JobPage.styles';
 
 function JobPage() {
   const params = useParams();
@@ -14,43 +14,41 @@ function JobPage() {
   const job = jobs.find((job) => job.id === params.id);
 
   return (
-    <main className={styles.jobPage}>
-      <section className={styles.card}>
-        <div className={styles.jobHeader}>
-          <div className={styles.job}>
-            <h4 className={styles.company}>{job?.company}</h4>
-            <h2 className={styles.title}>{job?.title}</h2>
-            <p className={styles.industry}>{job?.industry}</p>
-            <div className={styles.jobFeatures}>
-              <p>{job?.employmentType}</p>
-              <p>{job?.location}</p>
-              <p>
-                ${job?.salaryFrom} - ${job?.salaryTo} USD
-              </p>
-            </div>
-          </div>
+    <JobPageContainer>
+      <section className='jobCard'>
+        <div className='jobHeader'>
           <div>
-            <p className={styles.date}>{job?.postedDate.toDateString()}</p>
+            <div className='company'>{job?.company}</div>
+            <div className='title'>{job?.title}</div>
           </div>
+          <div className='postedDate'>{job?.postedDate.toDateString()}</div>
+        </div>
+        <p className='jobIndustry'>{job?.industry}</p>
+        <div className='jobFeatures'>
+          <p className='employmentType'>{job?.employmentType}</p>
+          <p className='location'>{job?.location}</p>
+          <p>
+            ${job?.salaryFrom} - ${job?.salaryTo} USD
+          </p>
         </div>
         <div>
-          <h4 className={styles.jobDescriptionTitle}>Job Description</h4>
-          <p className={styles.jobDescription}>{job?.description}</p>
+          <h4 className='descriptionTitle'>Job Description</h4>
+          <p className='descriptionText'>{job?.description}</p>
         </div>
         <div>
-          <h4 className={styles.jobSkillsTitle}>Job Skills</h4>
-          <ul className={styles.jobSkills}>
+          <h4 className='skillsTitle'>Job Skills</h4>
+          <ul className='jobSkills'>
             {job?.skillsRequired.map((skill) => (
-              <li key={skill} className={styles.jobSkill}>
+              <li key={skill} className='skill'>
                 {skill}
               </li>
             ))}
           </ul>
         </div>
       </section>
-      <section className={`${styles.card} ${styles.form}`}>
-        <h4 className={styles.applicationTitle}>Apply for this job</h4>
-        <form>
+      <section className='jobCard jobForm'>
+        <h4 className='title'>Apply for this job</h4>
+        <form className='inputs'>
           <Input
             type='text'
             name='name'
@@ -72,23 +70,27 @@ function JobPage() {
             placeholder='Phone Number'
             onChange={() => console.log('number')}
           />
-          <label htmlFor='cv' className={styles.cvLabel}>
+          <label htmlFor='cv' className='cvTitle'>
             <span>Upload your CV</span>
-            <input type='file' name='cv' id='cv' className={styles.cvInput} />
+            <input type='file' name='cv' id='cv' />
           </label>
           <textarea
             name='cover'
             id='cover'
             rows={4}
             placeholder='Cover Letter'
-            className={styles.coverLetter}
+            className='coverLetter'
           ></textarea>
-          <Button variant='primary' onClick={() => console.log('Apply Now')}>
+          <Button
+            type='submit'
+            variant='primary'
+            onClick={() => console.log('Apply Now')}
+          >
             Apply Now
           </Button>
         </form>
       </section>
-    </main>
+    </JobPageContainer>
   );
 }
 
