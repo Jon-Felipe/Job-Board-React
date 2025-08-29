@@ -12,6 +12,15 @@ type DropdownProps = {
 
 function Dropdown({ title, dropdownOptions }: DropdownProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(true);
+  const [selectedOptions, setSelectedOptions] = useState<IDropdownOption[]>([]);
+
+  function handleToggleOption(option: IDropdownOption) {
+    setSelectedOptions((prevState) => {
+      return prevState.includes(option)
+        ? prevState.filter((item) => item !== option)
+        : [...prevState, option];
+    });
+  }
 
   return (
     <DropdownContainer>
@@ -30,8 +39,15 @@ function Dropdown({ title, dropdownOptions }: DropdownProps) {
         <div className='options'>
           {dropdownOptions.map((option) => (
             <div key={option.id} className='optionContainer'>
-              <input type='checkbox' id={option.text} />
-              <label htmlFor={option.text}>{option.text}</label>
+              <label htmlFor={option.text}>
+                <input
+                  type='checkbox'
+                  id={option.text}
+                  checked={selectedOptions.includes(option)}
+                  onChange={() => handleToggleOption(option)}
+                />
+                {option.text}
+              </label>
             </div>
           ))}
         </div>
