@@ -18,7 +18,7 @@ describe('Dropdown Component', () => {
 
     const dropdown = screen.getByText(/test dropdown/i);
     expect(dropdown).toBeInTheDocument();
-    expect(screen.queryAllByRole('button')).toHaveLength(2);
+    expect(screen.queryAllByRole('checkbox')).toHaveLength(2);
   });
 
   it('should let user to toggle open and close dropdown', () => {
@@ -29,12 +29,12 @@ describe('Dropdown Component', () => {
     const dropdown = screen.getByText(/test dropdown/i);
     fireEvent.click(dropdown);
 
-    let dropdownOptions = screen.queryAllByRole('button');
+    let dropdownOptions = screen.queryAllByRole('checkbox');
     expect(dropdownOptions).toHaveLength(0);
 
     fireEvent.click(dropdown);
 
-    dropdownOptions = screen.queryAllByRole('button');
+    dropdownOptions = screen.queryAllByRole('checkbox');
     expect(dropdownOptions).toHaveLength(2);
   });
 });
