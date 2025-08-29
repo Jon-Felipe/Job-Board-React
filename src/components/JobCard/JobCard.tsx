@@ -12,7 +12,7 @@ type JobCardProps = {
 
 function JobCard({ job }: JobCardProps) {
   return (
-    <JobCardContainer>
+    <JobCardContainer data-testid='job-card'>
       <div className='jobCard-tabs'>
         <Badge>{job.employmentType}</Badge>
         <Badge>{job.location}</Badge>
