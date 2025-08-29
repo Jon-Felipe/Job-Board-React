@@ -37,4 +37,25 @@ describe('Dropdown Component', () => {
     dropdownOptions = screen.queryAllByRole('checkbox');
     expect(dropdownOptions).toHaveLength(2);
   });
+
+  it('should let user select and deselect options when checkbox is clicked', () => {
+    render(
+      <Dropdown title='Test Dropdown' dropdownOptions={dummyDropdownOptions} />
+    );
+
+    const dropdownOptions = screen.queryAllByRole(
+      'checkbox'
+    ) as HTMLInputElement[];
+    expect(dropdownOptions[0].checked).toBe(false);
+    expect(dropdownOptions[1].checked).toBe(false);
+
+    fireEvent.click(dropdownOptions[0]);
+    expect(dropdownOptions[0].checked).toBe(true);
+
+    fireEvent.click(dropdownOptions[1]);
+    expect(dropdownOptions[1].checked).toBe(true);
+
+    fireEvent.click(dropdownOptions[0]);
+    expect(dropdownOptions[0].checked).toBe(false);
+  });
 });
