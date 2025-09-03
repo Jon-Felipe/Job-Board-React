@@ -229,3 +229,7 @@ export const FeatureJobsContainer = styled.section`
     margin: 40px auto;
   }
 `;
+
+export const SpinnerContainer = styled.div`
+  margin: 50px auto;
+`;

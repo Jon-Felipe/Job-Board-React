@@ -7,11 +7,13 @@ import {
   FaBars,
 } from 'react-icons/fa';
 import { Link } from 'react-router';
+import { useGetAllJobsQuery } from '../../features/api/jobsApiSlice';
 
 // components
 import Search from '../../components/ui/Search/Search';
 import Button from '../../components/ui/Button/Button';
 import FeatureCard from '../../components/FeatureCard/FeatureCard';
+import Spinner from '../../components/ui/Spinner/Spinner';
 import LinkButton from '../../components/ui/LinkButton/LinkButton';
 import JobCard from '../../components/JobCard/JobCard';
 import JobTile from '../../components/JobTile/JobTile';
@@ -21,11 +23,14 @@ import {
   AboutContainer,
   FeatureJobsContainer,
   HeroContainer,
+  SpinnerContainer,
 } from './HomePage.styles';
-import { jobCategories, jobs } from '../../utils/constants';
+import { jobCategories } from '../../utils/constants';
 
 function HomePage() {
   const [isCardView, setIsCardView] = useState<boolean>(true);
+
+  const { data, isLoading } = useGetAllJobsQuery();
 
   return (
     <main>
@@ -117,15 +122,21 @@ function HomePage() {
             </button>
           </div>
         </div>
-        <div className={isCardView ? 'job-cards' : 'job-tiles'}>
-          {jobs.map((job) =>
-            isCardView ? (
-              <JobCard key={job.id} job={job} />
-            ) : (
-              <JobTile key={job.id} job={job} />
-            )
-          )}
-        </div>
+        {isLoading ? (
+          <SpinnerContainer>
+            <Spinner />
+          </SpinnerContainer>
+        ) : data ? (
+          <div className={isCardView ? 'job-cards' : 'job-tiles'}>
+            {data.jobs.map((job) =>
+              isCardView ? (
+                <JobCard key={job._id} job={job} />
+              ) : (
+                <JobTile key={job._id} job={job} />
+              )
+            )}
+          </div>
+        ) : null}
       </FeatureJobsContainer>
     </main>
   );
