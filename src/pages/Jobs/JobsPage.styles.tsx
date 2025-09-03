@@ -69,3 +69,7 @@ export const JobsPageContainer = styled.main`
     }
   }
 `;
+
+export const SpinnerContainer = styled.div`
+  margin: 100px auto 0;
+`;

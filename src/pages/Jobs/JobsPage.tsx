@@ -1,13 +1,18 @@
+import { useGetAllJobsQuery } from '../../features/api/jobsApiSlice';
+
 // components
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Button from '../../components/ui/Button/Button';
 import JobCard from '../../components/JobCard/JobCard';
 
 // extras
-import { JobsPageContainer } from './JobsPage.styles';
-import { jobs, jobTypes, experienceLevel } from '../../utils/constants';
+import { JobsPageContainer, SpinnerContainer } from './JobsPage.styles';
+import { jobTypes, experienceLevel } from '../../utils/constants';
+import Spinner from '../../components/ui/Spinner/Spinner';
 
 function JobsPage() {
+  const { data, isLoading } = useGetAllJobsQuery();
+
   return (
     <JobsPageContainer>
       <section className='header'>
@@ -16,30 +21,36 @@ function JobsPage() {
           Find jobs, create trackable resumes and enrich your applications
         </p>
       </section>
-      <div className='jobsContainer'>
-        <section className='jobsContainer-filters'>
-          <h4>Filters</h4>
-          <div className='jobsContainer-filterOptions'>
-            <Dropdown title='Job Types' dropdownOptions={jobTypes} />
-            <Dropdown
-              title='Experience Level'
-              dropdownOptions={experienceLevel}
-            />
-          </div>
-          <Button
-            type='button'
-            variant='outlined'
-            onClick={() => console.log('clear')}
-          >
-            Clear Filters
-          </Button>
-        </section>
-        <section className='jobs'>
-          {jobs.map((job) => (
-            <JobCard key={job.id} job={job} />
-          ))}
-        </section>
-      </div>
+      {isLoading ? (
+        <SpinnerContainer>
+          <Spinner />
+        </SpinnerContainer>
+      ) : (
+        <div className='jobsContainer'>
+          <section className='jobsContainer-filters'>
+            <h4>Filters</h4>
+            <div className='jobsContainer-filterOptions'>
+              <Dropdown title='Job Types' dropdownOptions={jobTypes} />
+              <Dropdown
+                title='Experience Level'
+                dropdownOptions={experienceLevel}
+              />
+            </div>
+            <Button
+              type='button'
+              variant='outlined'
+              onClick={() => console.log('clear')}
+            >
+              Clear Filters
+            </Button>
+          </section>
+          <section className='jobs'>
+            {data?.jobs.map((job) => (
+              <JobCard key={job._id} job={job} />
+            ))}
+          </section>
+        </div>
+      )}
     </JobsPageContainer>
   );
 }
