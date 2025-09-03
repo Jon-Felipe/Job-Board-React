@@ -22,7 +22,7 @@ export interface IJobCategory {
 }
 
 export interface IJob {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   company: string;
