@@ -11,7 +11,7 @@ import { jobTypes, experienceLevel } from '../../utils/constants';
 import Spinner from '../../components/ui/Spinner/Spinner';
 
 function JobsPage() {
-  const { data, isLoading } = useGetAllJobsQuery();
+  const { data, isLoading } = useGetAllJobsQuery({ limit: 9 });
 
   return (
     <JobsPageContainer>

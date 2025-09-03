@@ -30,7 +30,7 @@ import { jobCategories } from '../../utils/constants';
 function HomePage() {
   const [isCardView, setIsCardView] = useState<boolean>(true);
 
-  const { data, isLoading } = useGetAllJobsQuery();
+  const { data, isLoading } = useGetAllJobsQuery({ limit: 6 });
 
   return (
     <main>
