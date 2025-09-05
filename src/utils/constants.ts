@@ -29,7 +29,7 @@ export const jobCategories: IJobCategory[] = [
 
 export const jobs: IJob[] = [
   {
-    id: 'job-001',
+    _id: 'job-001',
     title: 'Frontend Developer',
     description:
       'Build and maintain user-facing features using React and TypeScript.',
@@ -45,7 +45,7 @@ export const jobs: IJob[] = [
     industry: 'Technology',
   },
   {
-    id: 'job-002',
+    _id: 'job-002',
     title: 'Backend Engineer',
     description:
       'Develop and maintain scalable backend services using Node.js and PostgreSQL.',
@@ -61,7 +61,7 @@ export const jobs: IJob[] = [
     industry: 'Software',
   },
   {
-    id: 'job-003',
+    _id: 'job-003',
     title: 'UI/UX Designer',
     description:
       'Design intuitive interfaces and improve user experience across web and mobile.',
@@ -77,7 +77,7 @@ export const jobs: IJob[] = [
     industry: 'Design',
   },
   {
-    id: 'job-004',
+    _id: 'job-004',
     title: 'Project Manager',
     description:
       'Lead software development projects and coordinate cross-functional teams.',
@@ -93,7 +93,7 @@ export const jobs: IJob[] = [
     industry: 'IT Services',
   },
   {
-    id: 'job-005',
+    _id: 'job-005',
     title: 'Data Analyst',
     description: 'Analyze business data to help drive strategic decisions.',
     company: 'MarketIQ',
@@ -108,7 +108,7 @@ export const jobs: IJob[] = [
     industry: 'Finance',
   },
   {
-    id: 'job-006',
+    _id: 'job-006',
     title: 'DevOps Engineer',
     description: 'Implement CI/CD pipelines and manage cloud infrastructure.',
     company: 'Cloudify',
@@ -123,7 +123,7 @@ export const jobs: IJob[] = [
     industry: 'Cloud Services',
   },
   {
-    id: 'job-007',
+    _id: 'job-007',
     title: 'Content Writer',
     description:
       'Create high-quality content for blogs, newsletters, and social media.',
@@ -139,7 +139,7 @@ export const jobs: IJob[] = [
     industry: 'Media',
   },
   {
-    id: 'job-008',
+    _id: 'job-008',
     title: 'Machine Learning Engineer',
     description: 'Develop predictive models and deploy ML pipelines.',
     company: 'Neurolytics AI',
@@ -154,7 +154,7 @@ export const jobs: IJob[] = [
     industry: 'Artificial Intelligence',
   },
   {
-    id: 'job-009',
+    _id: 'job-009',
     title: 'Technical Support Specialist',
     description:
       'Provide Level 2 support to customers using our SaaS platform.',
@@ -170,7 +170,7 @@ export const jobs: IJob[] = [
     industry: 'Customer Support',
   },
   {
-    id: 'job-010',
+    _id: 'job-010',
     title: 'Intern - Software Engineering',
     description:
       'Assist in developing new features and fixing bugs under mentorship.',
@@ -190,11 +190,11 @@ export const jobs: IJob[] = [
 export const jobTypes: IDropdownOption[] = [
   {
     id: 1,
-    text: 'Full-Time',
+    text: 'Full-time',
   },
   {
     id: 2,
-    text: 'Part-Time',
+    text: 'Part-time',
   },
   {
     id: 3,
