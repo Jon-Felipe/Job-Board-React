@@ -35,7 +35,7 @@ export interface IJob {
     | 'Contract'
     | 'Internship'
     | 'Freelance';
-  postedDate: Date;
+  createdAt: string;
   skillsRequired: string[];
   remote: boolean;
   experienceLevel: 'Entry' | 'Mid' | 'Senior';
