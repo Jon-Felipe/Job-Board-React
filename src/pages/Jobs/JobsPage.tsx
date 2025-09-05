@@ -20,6 +20,7 @@ function JobsPage() {
   const { data, isLoading } = useGetAllJobsQuery({
     limit: 9,
     employmentType: selectedJobTypes,
+    experienceLevel: selectedExperienceLevel,
   });
 
   return (

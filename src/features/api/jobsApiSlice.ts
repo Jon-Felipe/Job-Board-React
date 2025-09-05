@@ -5,15 +5,18 @@ export const jobsApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllJobs: builder.query<
       { jobs: IJob[] },
-      { limit?: number; employmentType?: string[] }
+      { limit?: number; employmentType?: string[]; experienceLevel?: string[] }
     >({
-      query: ({ limit, employmentType }) => {
+      query: ({ limit, employmentType, experienceLevel }) => {
         const params = new URLSearchParams();
 
         if (limit !== undefined) params.append('limit', String(limit));
 
         if (employmentType?.length)
           params.append('employmentType', employmentType.join(','));
+
+        if (experienceLevel?.length)
+          params.append('experienceLevel', experienceLevel.join(','));
 
         return `api/jobs?${params.toString()}`;
       },
