@@ -1,12 +1,15 @@
 import type { IJob } from '../../utils/types';
 import { apiSlice } from './apiSlice';
 
+type JobQueryParams = {
+  limit?: number;
+  employmentType?: string[];
+  experienceLevel?: string[];
+};
+
 export const jobsApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllJobs: builder.query<
-      { jobs: IJob[] },
-      { limit?: number; employmentType?: string[]; experienceLevel?: string[] }
-    >({
+    getAllJobs: builder.query<{ jobs: IJob[] }, JobQueryParams>({
       query: ({ limit, employmentType, experienceLevel }) => {
         const params = new URLSearchParams();
 
@@ -21,8 +24,11 @@ export const jobsApi = apiSlice.injectEndpoints({
         return `api/jobs?${params.toString()}`;
       },
     }),
+    getJob: builder.query<{ job: IJob }, string>({
+      query: (id) => `api/jobs/${id}`,
+    }),
   }),
   overrideExisting: false,
 });
 
-export const { useGetAllJobsQuery } = jobsApi;
+export const { useGetAllJobsQuery, useGetJobQuery } = jobsApi;
