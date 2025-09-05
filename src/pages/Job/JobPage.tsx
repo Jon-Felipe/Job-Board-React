@@ -1,44 +1,52 @@
 import { useParams } from 'react-router';
+import { useGetJobQuery } from '../../features/api/jobsApiSlice';
 
 // components
 import Input from '../../components/ui/Input/Input';
+import Spinner from '../../components/ui/Spinner/Spinner';
 
 // extras
-import { jobs } from '../../utils/constants';
 import Button from '../../components/ui/Button/Button';
-import { JobPageContainer } from './JobPage.styles';
+import { JobPageContainer, SpinnerContainer } from './JobPage.styles';
 
 function JobPage() {
   const params = useParams();
+  const { data, isLoading } = useGetJobQuery(params.id!);
 
-  const job = jobs.find((job) => job.id === params.id);
+  if (isLoading) {
+    return (
+      <SpinnerContainer>
+        <Spinner size='large' />
+      </SpinnerContainer>
+    );
+  }
 
   return (
     <JobPageContainer>
       <section className='jobCard'>
         <div className='jobHeader'>
           <div>
-            <div className='company'>{job?.company}</div>
-            <div className='title'>{job?.title}</div>
+            <div className='company'>{data?.job?.company}</div>
+            <div className='title'>{data?.job?.title}</div>
           </div>
-          <div className='postedDate'>{job?.postedDate.toDateString()}</div>
+          <div className='postedDate'>{data?.job?.createdAt}</div>
         </div>
-        <p className='jobIndustry'>{job?.industry}</p>
+        <p className='jobIndustry'>{data?.job?.industry}</p>
         <div className='jobFeatures'>
-          <p className='employmentType'>{job?.employmentType}</p>
-          <p className='location'>{job?.location}</p>
+          <p className='employmentType'>{data?.job?.employmentType}</p>
+          <p className='location'>{data?.job?.location}</p>
           <p>
-            ${job?.salaryFrom} - ${job?.salaryTo} USD
+            ${data?.job?.salaryFrom} - ${data?.job?.salaryTo} USD
           </p>
         </div>
         <div>
           <h4 className='descriptionTitle'>Job Description</h4>
-          <p className='descriptionText'>{job?.description}</p>
+          <p className='descriptionText'>{data?.job?.description}</p>
         </div>
         <div>
           <h4 className='skillsTitle'>Job Skills</h4>
           <ul className='jobSkills'>
-            {job?.skillsRequired.map((skill) => (
+            {data?.job?.skillsRequired.map((skill) => (
               <li key={skill} className='skill'>
                 {skill}
               </li>

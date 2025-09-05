@@ -188,3 +188,7 @@ export const JobPageContainer = styled.main`
     }
   }
 `;
+
+export const SpinnerContainer = styled.div`
+  margin: 200px auto 0;
+`;
