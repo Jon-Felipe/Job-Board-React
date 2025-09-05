@@ -3,8 +3,20 @@ import { apiSlice } from './apiSlice';
 
 export const jobsApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllJobs: builder.query<{ jobs: IJob[] }, { limit?: number }>({
-      query: ({ limit }) => `api/jobs?limit=${limit}`,
+    getAllJobs: builder.query<
+      { jobs: IJob[] },
+      { limit?: number; employmentType?: string[] }
+    >({
+      query: ({ limit, employmentType }) => {
+        const params = new URLSearchParams();
+
+        if (limit !== undefined) params.append('limit', String(limit));
+
+        if (employmentType?.length)
+          params.append('employmentType', employmentType.join(','));
+
+        return `api/jobs?${params.toString()}`;
+      },
     }),
   }),
   overrideExisting: false,
