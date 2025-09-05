@@ -55,7 +55,10 @@ function JobsPage() {
             <Button
               type='button'
               variant='outlined'
-              onClick={() => console.log('clear')}
+              onClick={() => {
+                setSelectedJobTypes([]);
+                setSelectedExperienceLevel([]);
+              }}
             >
               Clear Filters
             </Button>
