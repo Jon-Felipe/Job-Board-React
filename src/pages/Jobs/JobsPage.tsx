@@ -1,17 +1,26 @@
+import { useState } from 'react';
 import { useGetAllJobsQuery } from '../../features/api/jobsApiSlice';
 
 // components
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Button from '../../components/ui/Button/Button';
 import JobCard from '../../components/JobCard/JobCard';
+import Spinner from '../../components/ui/Spinner/Spinner';
 
 // extras
 import { JobsPageContainer, SpinnerContainer } from './JobsPage.styles';
 import { jobTypes, experienceLevel } from '../../utils/constants';
-import Spinner from '../../components/ui/Spinner/Spinner';
 
 function JobsPage() {
-  const { data, isLoading } = useGetAllJobsQuery({ limit: 9 });
+  const [selectedJobTypes, setSelectedJobTypes] = useState<string[]>([]);
+  const [selectedExperienceLevel, setSelectedExperienceLevel] = useState<
+    string[]
+  >([]);
+
+  const { data, isLoading } = useGetAllJobsQuery({
+    limit: 9,
+    employmentType: selectedJobTypes,
+  });
 
   return (
     <JobsPageContainer>
@@ -30,10 +39,17 @@ function JobsPage() {
           <section className='jobsContainer-filters'>
             <h4>Filters</h4>
             <div className='jobsContainer-filterOptions'>
-              <Dropdown title='Job Types' dropdownOptions={jobTypes} />
+              <Dropdown
+                title='Job Types'
+                dropdownOptions={jobTypes}
+                selectedOptions={selectedJobTypes}
+                setSelectedOptions={setSelectedJobTypes}
+              />
               <Dropdown
                 title='Experience Level'
                 dropdownOptions={experienceLevel}
+                selectedOptions={selectedExperienceLevel}
+                setSelectedOptions={setSelectedExperienceLevel}
               />
             </div>
             <Button
