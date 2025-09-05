@@ -19,10 +19,11 @@ export const JobsPageContainer = styled.main`
 
   .jobsContainer {
     display: grid;
+    align-items: start;
     row-gap: 20px;
     padding: 0 20px;
     max-width: 1700px;
-    margin: 40px auto 0;
+    margin: 40px auto;
   }
 
   .jobsContainer-filters {
