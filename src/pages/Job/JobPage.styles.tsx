@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const JobPageContainer = styled.main`
   display: grid;
+  align-items: start;
   row-gap: 20px;
   padding: 40px;
   max-width: 1440px;
