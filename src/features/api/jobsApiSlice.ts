@@ -21,11 +21,11 @@ export const jobsApi = apiSlice.injectEndpoints({
         if (experienceLevel?.length)
           params.append('experienceLevel', experienceLevel.join(','));
 
-        return `api/jobs?${params.toString()}`;
+        return `jobs?${params.toString()}`;
       },
     }),
     getJob: builder.query<{ job: IJob }, string>({
-      query: (id) => `api/jobs/${id}`,
+      query: (id) => `jobs/${id}`,
     }),
   }),
   overrideExisting: false,

@@ -8,7 +8,7 @@ export const authApi = apiSlice.injectEndpoints({
       UserRegisterDetails
     >({
       query: (userDetails) => ({
-        url: 'api/auth/register',
+        url: 'auth/register',
         method: 'POST',
         body: userDetails,
       }),
