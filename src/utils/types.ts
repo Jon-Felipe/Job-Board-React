@@ -9,12 +9,18 @@ export interface IUser {
   firstName: string;
   lastName: string;
   email: string;
+  password?: string;
   phone?: string;
   age?: string | number;
   address?: IAddress;
 }
 
 export type BasicUserInfo = Pick<IUser, 'firstName' | 'lastName' | 'email'>;
+
+export type UserRegisterDetails = Pick<
+  IUser,
+  'firstName' | 'lastName' | 'email' | 'password'
+>;
 
 export interface IJobCategory {
   id: number;
