@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
+import { useRegisterUserMutation } from '../../features/api/authApiSlice';
+import { registerUser } from '../../features/user/userSlice';
 
 // components
 import Button from '../../components/ui/Button/Button';
 import Input from '../../components/ui/Input/Input';
 
 // extras
-import { addUser } from '../../features/user/userSlice';
 import {
   FlexContainer,
   FormActions,
@@ -33,6 +34,8 @@ function LoginPage() {
     confirmPassword: '',
   });
 
+  const [registerUserRequest, { isLoading }] = useRegisterUserMutation();
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -45,7 +48,7 @@ function LoginPage() {
     });
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const { firstName, lastName, email, password, confirmPassword } =
@@ -67,21 +70,21 @@ function LoginPage() {
         alert('Passwords must match');
         return;
       }
+      await registerUserRequest({ firstName, lastName, email, password });
+
+      dispatch(
+        registerUser({
+          firstName: signUpDetails.firstName,
+          lastName: signUpDetails.lastName,
+          email: signUpDetails.email,
+        })
+      );
     } else {
       if (!email.trim() || !password.trim()) {
         alert('Please fill in all values');
         return;
       }
     }
-
-    dispatch(
-      addUser({
-        firstName: signUpDetails.firstName,
-        lastName: signUpDetails.lastName,
-        email: signUpDetails.email,
-      })
-    );
-
     navigate('/');
   }
 
@@ -136,7 +139,7 @@ function LoginPage() {
           />
         )}
         <Button type='submit' variant='primary' size='large'>
-          Sign {isSignUp ? 'Up' : 'In'}
+          {isLoading ? 'Loading...' : `Sign ${isSignUp ? 'Up' : 'In'}`}
         </Button>
       </FormContainer>
       <FormActions className='form-actions'>
