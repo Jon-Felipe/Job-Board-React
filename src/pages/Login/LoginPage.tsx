@@ -59,39 +59,53 @@ function LoginPage() {
     const { firstName, lastName, email, password, confirmPassword } =
       signUpDetails;
 
-    if (isSignUp) {
-      if (
-        !firstName.trim() ||
-        !lastName.trim() ||
-        !email.trim() ||
-        !password.trim() ||
-        !confirmPassword.trim()
-      ) {
-        alert('Please fill in all values');
-        return;
+    try {
+      if (isSignUp) {
+        if (
+          !firstName.trim() ||
+          !lastName.trim() ||
+          !email.trim() ||
+          !password.trim() ||
+          !confirmPassword.trim()
+        ) {
+          alert('Please fill in all values');
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          alert('Passwords must match');
+          return;
+        }
+
+        await registerUserRequest({
+          firstName,
+          lastName,
+          email,
+          password,
+        }).unwrap();
+
+        dispatch(registerUser({ firstName, lastName, email }));
+      } else {
+        if (!email.trim() || !password.trim()) {
+          alert('Please fill in all values');
+          return;
+        }
+
+        await loginUser({ email, password });
       }
 
-      if (password !== confirmPassword) {
-        alert('Passwords must match');
-        return;
-      }
-      await registerUserRequest({ firstName, lastName, email, password });
+      setSignUpDetails({
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+      });
 
-      dispatch(
-        registerUser({
-          firstName: signUpDetails.firstName,
-          lastName: signUpDetails.lastName,
-          email: signUpDetails.email,
-        })
-      );
-    } else {
-      if (!email.trim() || !password.trim()) {
-        alert('Please fill in all values');
-        return;
-      }
-      await loginUser({ email, password });
+      navigate('/');
+    } catch (error) {
+      alert('Something went wrong. Please try again.');
     }
-    navigate('/');
   }
 
   return (
