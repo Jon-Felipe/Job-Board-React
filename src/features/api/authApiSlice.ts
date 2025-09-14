@@ -1,15 +1,15 @@
 import { apiSlice } from './apiSlice';
 import type {
-  BasicUserInfo,
   IUser,
-  LoginUserInfo,
+  UserRegisterPayload,
+  UserLoginDetails,
   UserRegisterDetails,
 } from '../../utils/types';
 
 export const authApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     registerUser: builder.mutation<
-      { user: BasicUserInfo },
+      { user: UserRegisterPayload },
       UserRegisterDetails
     >({
       query: (userDetails) => ({
@@ -18,7 +18,7 @@ export const authApi = apiSlice.injectEndpoints({
         body: userDetails,
       }),
     }),
-    loginUser: builder.mutation<{ user: IUser }, LoginUserInfo>({
+    loginUser: builder.mutation<{ user: Partial<IUser> }, UserLoginDetails>({
       query: (userDetails) => ({
         url: 'auth/login',
         method: 'POST',

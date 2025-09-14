@@ -5,7 +5,7 @@ import {
   useRegisterUserMutation,
   useLoginUserMutation,
 } from '../../features/api/authApiSlice';
-import { registerUser } from '../../features/user/userSlice';
+import { registerUser, loginUser } from '../../features/user/userSlice';
 
 // components
 import Button from '../../components/ui/Button/Button';
@@ -39,7 +39,8 @@ function LoginPage() {
 
   const [registerUserRequest, { isLoading: registerLoading }] =
     useRegisterUserMutation();
-  const [loginUser, { isLoading: loginLoading }] = useLoginUserMutation();
+  const [loginUserRequest, { isLoading: loginLoading }] =
+    useLoginUserMutation();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -77,21 +78,27 @@ function LoginPage() {
           return;
         }
 
-        await registerUserRequest({
+        const { user } = await registerUserRequest({
           firstName,
           lastName,
           email,
           password,
         }).unwrap();
 
-        dispatch(registerUser({ firstName, lastName, email }));
+        dispatch(registerUser(user));
+
+        navigate('/');
       } else {
         if (!email.trim() || !password.trim()) {
           alert('Please fill in all values');
           return;
         }
 
-        await loginUser({ email, password });
+        const { user } = await loginUserRequest({ email, password }).unwrap();
+
+        dispatch(loginUser(user));
+
+        navigate('/');
       }
 
       setSignUpDetails({
@@ -101,8 +108,6 @@ function LoginPage() {
         password: '',
         confirmPassword: '',
       });
-
-      navigate('/');
     } catch (error) {
       alert('Something went wrong. Please try again.');
     }

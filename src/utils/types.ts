@@ -15,12 +15,16 @@ export interface IUser {
   address?: IAddress;
 }
 
-export type BasicUserInfo = Pick<IUser, 'firstName' | 'lastName' | 'email'>;
-export type LoginUserInfo = Pick<IUser, 'email' | 'password'>;
-
 export type UserRegisterDetails = Pick<
   IUser,
   'firstName' | 'lastName' | 'email' | 'password'
+>;
+
+export type UserLoginDetails = Pick<IUser, 'email' | 'password'>;
+
+export type UserRegisterPayload = Pick<
+  IUser,
+  'firstName' | 'lastName' | 'email'
 >;
 
 export interface IJobCategory {
