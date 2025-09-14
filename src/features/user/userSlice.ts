@@ -21,12 +21,15 @@ export const userSlice = createSlice({
       state.lastName = payload.lastName;
       state.email = payload.email;
     },
+    loginUser: (state, action: PayloadAction<IUser>) => {
+      Object.assign(state, action.payload);
+    },
     updateUser: (state, action: PayloadAction<IUser>) => {
       Object.assign(state, action.payload);
     },
   },
 });
 
-export const { registerUser, updateUser } = userSlice.actions;
+export const { registerUser, loginUser, updateUser } = userSlice.actions;
 
 export default userSlice.reducer;

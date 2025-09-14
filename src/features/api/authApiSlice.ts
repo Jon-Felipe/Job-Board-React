@@ -1,5 +1,10 @@
 import { apiSlice } from './apiSlice';
-import type { BasicUserInfo, UserRegisterDetails } from '../../utils/types';
+import type {
+  BasicUserInfo,
+  IUser,
+  LoginUserInfo,
+  UserRegisterDetails,
+} from '../../utils/types';
 
 export const authApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -13,7 +18,14 @@ export const authApi = apiSlice.injectEndpoints({
         body: userDetails,
       }),
     }),
+    loginUser: builder.mutation<{ user: IUser }, LoginUserInfo>({
+      query: (userDetails) => ({
+        url: 'auth/login',
+        method: 'POST',
+        body: userDetails,
+      }),
+    }),
   }),
 });
 
-export const { useRegisterUserMutation } = authApi;
+export const { useRegisterUserMutation, useLoginUserMutation } = authApi;
