@@ -16,6 +16,7 @@ export interface IUser {
 }
 
 export type BasicUserInfo = Pick<IUser, 'firstName' | 'lastName' | 'email'>;
+export type LoginUserInfo = Pick<IUser, 'email' | 'password'>;
 
 export type UserRegisterDetails = Pick<
   IUser,
