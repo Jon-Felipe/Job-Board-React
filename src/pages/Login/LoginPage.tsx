@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { useRegisterUserMutation } from '../../features/api/authApiSlice';
+import {
+  useRegisterUserMutation,
+  useLoginUserMutation,
+} from '../../features/api/authApiSlice';
 import { registerUser } from '../../features/user/userSlice';
 
 // components
@@ -34,7 +37,9 @@ function LoginPage() {
     confirmPassword: '',
   });
 
-  const [registerUserRequest, { isLoading }] = useRegisterUserMutation();
+  const [registerUserRequest, { isLoading: registerLoading }] =
+    useRegisterUserMutation();
+  const [loginUser, { isLoading: loginLoading }] = useLoginUserMutation();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -84,6 +89,7 @@ function LoginPage() {
         alert('Please fill in all values');
         return;
       }
+      await loginUser({ email, password });
     }
     navigate('/');
   }
@@ -139,7 +145,9 @@ function LoginPage() {
           />
         )}
         <Button type='submit' variant='primary' size='large'>
-          {isLoading ? 'Loading...' : `Sign ${isSignUp ? 'Up' : 'In'}`}
+          {registerLoading || loginLoading
+            ? 'Loading...'
+            : `Sign ${isSignUp ? 'Up' : 'In'}`}
         </Button>
       </FormContainer>
       <FormActions className='form-actions'>
