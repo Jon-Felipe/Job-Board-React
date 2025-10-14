@@ -1,15 +1,17 @@
 import { Outlet } from 'react-router';
-import styles from './ProfileLayout.module.css';
 
 // components
 import LinkButton from '../../components/ui/LinkButton/LinkButton';
 
+// extras
+import { ProfileLayoutContainer } from './ProfileLayout.styles';
+
 function ProfileLayout() {
   return (
-    <main className={styles.profileLayout}>
-      <h1 className={styles.title}>My Profile</h1>
-      <div className={styles.container}>
-        <section className={styles.linkButtons}>
+    <ProfileLayoutContainer>
+      <h1 className='title'>My Profile</h1>
+      <div className='container'>
+        <section className='link-buttons'>
           <LinkButton path=''>Profile</LinkButton>
           <LinkButton path='applications'>Applications</LinkButton>
           <LinkButton path='/'>Logout</LinkButton>
@@ -18,7 +20,7 @@ function ProfileLayout() {
           <Outlet />
         </section>
       </div>
-    </main>
+    </ProfileLayoutContainer>
   );
 }
 
