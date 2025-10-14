@@ -7,7 +7,7 @@ import Button from '../../components/ui/Button/Button';
 import Input from '../../components/ui/Input/Input';
 
 // extras
-import styles from './ProfilePage.module.css';
+import { ProfilePageContainer } from './ProfilePage.styles';
 import type { IAddress, IUser } from '../../utils/types';
 
 function ProfilePage() {
@@ -60,29 +60,29 @@ function ProfilePage() {
   }
 
   return (
-    <div>
-      <section className={styles.detailsSection}>
-        <h3 className={styles.detailsTitle}>Update Your Details</h3>
-        <form onSubmit={handleOnSubmit}>
-          <div className={styles.userDetailsForm}>
-            <section>
-              <h4 className={styles.formTitle}>Personal Information</h4>
-              <div className={styles.flex}>
-                <Input
-                  type='text'
-                  placeholder='First Name'
-                  name='firstName'
-                  value={userDetails.firstName}
-                  onChange={handleOnChange}
-                />
-                <Input
-                  type='text'
-                  placeholder='Last Name'
-                  name='lastName'
-                  value={userDetails.lastName}
-                  onChange={handleOnChange}
-                />
-              </div>
+    <ProfilePageContainer>
+      <h3 className='heading'>Update Your Details</h3>
+      <form onSubmit={handleOnSubmit}>
+        <section>
+          <h4>Personal Information</h4>
+          <div className='personal-info'>
+            <div className='row'>
+              <Input
+                type='text'
+                placeholder='First Name'
+                name='firstName'
+                value={userDetails.firstName}
+                onChange={handleOnChange}
+              />
+              <Input
+                type='text'
+                placeholder='Last Name'
+                name='lastName'
+                value={userDetails.lastName}
+                onChange={handleOnChange}
+              />
+            </div>
+            <div className='row'>
               <Input
                 type='email'
                 placeholder='Email'
@@ -90,48 +90,49 @@ function ProfilePage() {
                 value={userDetails.email}
                 onChange={handleOnChange}
               />
-              <div className={styles.flex}>
-                <Input
-                  type='text'
-                  placeholder='Phone'
-                  name='phone'
-                  value={userDetails.phone}
-                  onChange={handleOnChange}
-                />
-                <Input
-                  type='number'
-                  placeholder='Age'
-                  name='age'
-                  value={userDetails.age}
-                  onChange={handleOnChange}
-                />
-              </div>
-            </section>
-            <section>
-              <h4 className={styles.formTitle}>Address</h4>
               <Input
                 type='text'
-                placeholder='Street'
-                name='address.street'
-                value={userDetails.address?.street}
+                placeholder='Phone'
+                name='phone'
+                value={userDetails.phone}
                 onChange={handleOnChange}
               />
-              <div className={styles.flex}>
-                <Input
-                  type='text'
-                  placeholder='City'
-                  name='address.city'
-                  value={userDetails.address?.city}
-                  onChange={handleOnChange}
-                />
-                <Input
-                  type='text'
-                  placeholder='Postal Code'
-                  name='address.postalCode'
-                  value={userDetails.address?.postalCode}
-                  onChange={handleOnChange}
-                />
-              </div>
+              <Input
+                type='number'
+                placeholder='Age'
+                name='age'
+                value={userDetails.age}
+                onChange={handleOnChange}
+              />
+            </div>
+          </div>
+        </section>
+        <section>
+          <h4>Address</h4>
+          <div className='address'>
+            <Input
+              type='text'
+              placeholder='Street'
+              name='address.street'
+              value={userDetails.address?.street}
+              onChange={handleOnChange}
+            />
+            <div className='row'>
+              <Input
+                type='text'
+                placeholder='City'
+                name='address.city'
+                value={userDetails.address?.city}
+                onChange={handleOnChange}
+              />
+              <Input
+                type='text'
+                placeholder='Postal Code'
+                name='address.postalCode'
+                value={userDetails.address?.postalCode}
+                onChange={handleOnChange}
+              />
+
               <Input
                 type='text'
                 placeholder='Country'
@@ -139,16 +140,16 @@ function ProfilePage() {
                 value={userDetails.address?.country}
                 onChange={handleOnChange}
               />
-            </section>
+            </div>
           </div>
-          <div className={styles.submitButton}>
-            <Button type='submit' variant='inverted'>
-              Save Changes
-            </Button>
-          </div>
-        </form>
-      </section>
-    </div>
+        </section>
+        <div className='save-btn'>
+          <Button type='submit' variant='primary'>
+            Save Changes
+          </Button>
+        </div>
+      </form>
+    </ProfilePageContainer>
   );
 }
 
