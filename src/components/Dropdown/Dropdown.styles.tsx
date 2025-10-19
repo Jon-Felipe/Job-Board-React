@@ -5,13 +5,14 @@ export const DropdownContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    min-width: 100px;
     cursor: pointer;
 
     .title {
       font-size: 16px;
       font-weight: 500;
       color: rgb(110, 113, 134);
-      margin-bottom: 0;
+      margin: 0;
     }
 
     .icon {
