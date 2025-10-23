@@ -5,6 +5,7 @@ export const JobCardContainer = styled.article`
   border: 1px solid rgba(29, 36, 69, 0.1);
   border-radius: 10px;
   padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   .jobCard-tabs {
     display: flex;
@@ -30,11 +31,14 @@ export const JobCardContainer = styled.article`
     display: flex;
     align-items: flex-start;
     column-gap: 5px;
+    margin-bottom: 15px;
 
     p,
     span {
       color: rgba(29, 36, 69, 0.8);
       font-size: 14px;
+      margin-top: 0;
+      margin-bottom: 0;
     }
   }
 `;
